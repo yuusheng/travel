@@ -1,7 +1,8 @@
 <template>
   <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
     <el-menu-item index="1">首页</el-menu-item>
-    <el-menu-item index="2" disabled>信息</el-menu-item>
+    <el-menu-item index="2">信息</el-menu-item>
+    <div style="width: calc(100% - 68px * 3)"></div>
     <el-menu-item index="3">用户</el-menu-item>
   </el-menu>
 </template>
@@ -19,3 +20,5 @@ const handleSelect = (key, keyPath) => {
   }
 }
 </script>
+
+<style></style>
