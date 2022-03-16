@@ -1,17 +1,23 @@
 <template>
-  <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-    <el-menu-item index="1">首页</el-menu-item>
-    <el-menu-item index="2">信息</el-menu-item>
-    <div style="width: calc(100% - 68px * 3)"></div>
-    <el-menu-item index="3">用户</el-menu-item>
-  </el-menu>
+  <nav
+    class="bg-transparent text-white border-gray-400 px-2 sm:px-4 py-2.5 flex justify-between items-center dark:bg-gray-800"
+  >
+    <ul class="flex">
+      <li>
+        <a href="/"><h1>logo</h1></a>
+      </li>
+      <li class="my-auto text-xl mx-3"><a href="/">主页</a></li>
+    </ul>
+    <ul class="flex">
+      <li class="mx-2"><a href="/about">关于</a></li>
+      <li class=""><a href="/user">用户</a></li>
+    </ul>
+  </nav>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-
-const activeIndex = ref('1')
 
 const router = useRouter()
 const handleSelect = (key, keyPath) => {

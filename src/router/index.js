@@ -1,10 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomePage from '@/pages/HomePage.vue'
-import User from '../pages/User.vue'
+const HomePage = () => import('@/pages/HomePage.vue')
+const User = () => import('@/pages/User.vue')
+const Login = () => import('@/pages/Login/index.vue')
 
 const routes = [
+  { path: '/:id', component: HomePage },
   { path: '/', component: HomePage },
   { path: '/user', component: User },
+  { path: '/login', component: Login },
 ]
 
 const router = createRouter({

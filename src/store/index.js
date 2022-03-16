@@ -4,14 +4,12 @@ const store = createStore({
   state() {
     return {
       user: {
-        userName: 'yuusheng',
+        name: 'yuusheng',
       },
     }
   },
   mutations: {
-    increment(state) {
-      state.count++
-    },
+    changeState(state) {},
   },
 })
 
