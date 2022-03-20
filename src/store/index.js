@@ -4,12 +4,23 @@ const store = createStore({
   state() {
     return {
       user: {
-        name: 'yuusheng',
+        name: '',
+        email: '',
+        avatar: '',
+        token: '',
       },
+      status: false,
     }
   },
   mutations: {
-    changeState(state) {},
+    login(state, user) {
+      state.user = user
+      state.status = true
+    },
+    logout(state) {
+      state.user = {}
+      state.status = false
+    },
   },
 })
 

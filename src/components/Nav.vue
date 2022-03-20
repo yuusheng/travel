@@ -10,19 +10,25 @@
     </ul>
     <ul class="flex">
       <li class="mx-2"><a href="/about">关于</a></li>
-      <li class=""><a href="/user">用户</a></li>
+      <li class="">
+        <a @click="handleClick" class="cursor-pointer">{{ store.state.user.name ? store.state.user.name : '登录' }}</a>
+      </li>
     </ul>
   </nav>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
-
+import { useStore } from 'vuex'
+const store = useStore()
 const router = useRouter()
-const handleSelect = (key, keyPath) => {
-  if (key === '3') {
+
+const handleClick = () => {
+  if (store.state.status) {
     router.push('/user')
+  } else {
+    router.push('/login')
   }
 }
 </script>
