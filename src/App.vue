@@ -4,14 +4,20 @@
 
 <script setup>
 import { useStore } from 'vuex'
-import axios from './request'
-import { currentUser } from './http/user'
+import { currentUser, getStorage } from './http/user'
+import { onBeforeMount } from 'vue'
 
-// const store = useStore()
-// if (store.state.user.token) {
-//   let res = currentUser(store.state.user.token)
-//   console.log(res)
-// }
+const store = useStore()
+onBeforeMount(async () => {
+  // 获取token
+  let token = getStorage()
+  if (token) {
+    // 获取当前用户
+    let user = await currentUser(token)
+    // 修改vuex
+    store.commit('login', user)
+  }
+})
 </script>
 
 <style></style>
