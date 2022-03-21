@@ -11,6 +11,7 @@ const store = useStore()
 onBeforeMount(async () => {
   // 获取token
   let token = getStorage()
+  console.log(token)
   if (token) {
     // 获取当前用户
     let user = await currentUser(token)

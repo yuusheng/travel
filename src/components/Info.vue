@@ -1,9 +1,9 @@
 <template>
   <div
-    class="absolute right-24 top-20 rounded-xl shadow-xl w-52 flex flex-col bg-white p-3 border-[1px] border-gray-100"
+    class="absolute right-24 top-20 rounded-xl shadow-xl w-52 flex flex-col bg-white p-3 border-[2px] border-gray-100"
   >
-    <a href="/user" class="mx-auto my-3 text-lg font-bold">{{ name }}</a>
-    <section class="flex justify-center flex-col my-2">
+    <a href="/user" class="mx-auto py-2 my-1 text-lg font-bold border-b-[1px] border-gray-200/60">{{ name }}</a>
+    <section class="flex justify-center flex-col mt-2 mb-4">
       <a href="/user" class="section-item">个人中心</a>
       <a href="#" class="section-item">投稿管理</a>
     </section>
