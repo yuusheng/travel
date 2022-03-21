@@ -62,12 +62,14 @@
       </div> -->
       <!-- 按钮部分 -->
       <div>
-        <a class="text-blue-700 cursor-pointer" @click="changeState">{{
+        <a class="text-theme cursor-pointer" @click="changeState">{{
           login ? '还没有账号？点我注册' : '已有账号？点我登录'
         }}</a>
       </div>
       <footer class="mt-10 flex justify-center">
-        <el-button @click="handleClick">{{ login ? '登录' : '注册' }}</el-button>
+        <button class="bg-theme text-white px-6 py-2 rounded-sm" @click="handleClick">
+          {{ login ? '登录' : '注册' }}
+        </button>
       </footer>
     </div>
   </div>

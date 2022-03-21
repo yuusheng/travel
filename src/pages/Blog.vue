@@ -1,7 +1,9 @@
 <template>
-  <div>blog</div>
+  <Building>Blog</Building>
 </template>
 
-<script setup></script>
+<script setup>
+import Building from './Building.vue'
+</script>
 
 <style lang="scss" scoped></style>

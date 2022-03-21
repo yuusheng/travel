@@ -1,6 +1,6 @@
 <template>
   <div
-    class="absolute right-12 top-20 rounded-xl shadow-xl w-52 flex flex-col bg-white p-3 border-[1px] border-gray-100"
+    class="absolute right-24 top-20 rounded-xl shadow-xl w-52 flex flex-col bg-white p-3 border-[1px] border-gray-100"
   >
     <a href="/user" class="mx-auto my-3 text-lg font-bold">{{ name }}</a>
     <section class="flex justify-center flex-col my-2">

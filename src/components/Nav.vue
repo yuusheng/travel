@@ -6,7 +6,7 @@
       </li>
     </ul>
     <section class="flex">
-      <ul class="hidden md:flex space-x-12 items-center">
+      <ul class="hidden md:flex space-x-12 items-center relative md:right-10">
         <li class="text-selected-text"><a href="/">主页</a></li>
         <li class=""><a href="/blog">博客</a></li>
         <li class=""><a href="/about">关于</a></li>
@@ -16,11 +16,13 @@
           <Avatar
             @click="handleClick"
             v-if="store.state.status"
-            class="md:group-hover:translate-y-6 md:group-hover:-translate-x-10 md:group-hover:w-20 md:group-hover:h-20"
+            class="md:group-hover:translate-y-6 md:group-hover:-translate-x-2 md:group-hover:w-20 md:group-hover:h-20"
             :imgUrl="'http://' + store.state.user.avatar"
           />
-          <a href="/login" v-else>登录</a>
-          <Info :name="store.state.user.name" class="hidden md:group-hover:flex"></Info>
+          <a href="/login" class="px-3 py-2 bg-theme rounded font-bold text-white shadow" v-else
+            ><button>登 录</button></a
+          >
+          <Info v-if="store.state.status" :name="store.state.user.name" class="hidden md:group-hover:flex"></Info>
         </li>
       </ul>
     </section>

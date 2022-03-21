@@ -16,6 +16,8 @@ onBeforeMount(async () => {
     let user = await currentUser(token)
     // 修改vuex
     store.commit('login', user)
+  } else {
+    store.commit('logout')
   }
 })
 </script>

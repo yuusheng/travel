@@ -48,6 +48,6 @@ export const getStorage = () => {
 export const signOut = () => {
   localStorage.removeItem('Authorization')
   const store = useStore()
-  store.commit('logout')
+  location.reload()
   console.log('退出成功')
 }
