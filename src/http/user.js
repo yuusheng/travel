@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { useStore } from 'vuex'
 
 // 登录
 export const signIn = async (name = '', email = '', password) => {
@@ -41,4 +42,12 @@ export const setStorage = (token) => {
 // 获取localStorage
 export const getStorage = () => {
   return localStorage.getItem('Authorization') ? localStorage.getItem('Authorization') : null
+}
+
+// 登出
+export const signOut = () => {
+  localStorage.removeItem('Authorization')
+  const store = useStore()
+  store.commit('logout')
+  console.log('退出成功')
 }
