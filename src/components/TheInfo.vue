@@ -2,9 +2,9 @@
   <div
     class="absolute right-24 top-20 rounded-xl shadow-xl w-52 flex flex-col bg-white p-3 border-[2px] border-gray-100"
   >
-    <a href="/user" class="mx-auto py-2 my-1 text-lg font-bold border-b-[1px] border-gray-200/60 dark:text-black">{{
-      name
-    }}</a>
+    <a href="/user" class="mx-auto py-2 my-1 text-lg font-bold border-b-[1px] border-gray-200/60 dark:text-black">
+      <slot></slot>
+    </a>
     <section class="flex justify-center flex-col mt-2 mb-4">
       <a href="/user" class="section-item">个人中心</a>
       <a href="#" class="section-item">投稿管理</a>
@@ -17,13 +17,6 @@
 
 <script setup>
 import { signOut } from '../http/user'
-
-const props = defineProps({
-  name: {
-    type: String,
-    default: 'user',
-  },
-})
 
 const logout = () => {
   signOut()

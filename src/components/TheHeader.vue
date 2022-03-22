@@ -13,7 +13,7 @@
       </ul>
       <ul>
         <li class="cursor-pointer w-12 group">
-          <Avatar
+          <BaseAvatar
             @click="handleClick"
             v-if="store.state.status"
             class="md:group-hover:translate-y-6 md:group-hover:-translate-x-2 md:group-hover:w-20 md:group-hover:h-20"
@@ -22,7 +22,7 @@
           <a href="/login" class="px-3 py-2 bg-theme rounded font-bold text-white shadow" v-else
             ><button>登 录</button></a
           >
-          <Info v-if="store.state.status" :name="store.state.user.name" class="hidden md:group-hover:flex"></Info>
+          <TheInfo v-if="store.state.status" class="hidden md:group-hover:flex">{{ store.state.user.name }}</TheInfo>
         </li>
       </ul>
     </section>
@@ -30,11 +30,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
-import Avatar from './Avatar.vue'
-import Info from './Info.vue'
+import BaseAvatar from './BaseAvatar.vue'
+import TheInfo from './TheInfo.vue'
 const store = useStore()
 const router = useRouter()
 
@@ -45,8 +44,6 @@ const handleClick = () => {
     router.push('/login')
   }
 }
-
-const hoverAvatar = ref(false)
 </script>
 
 <style>

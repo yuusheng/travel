@@ -1,10 +1,10 @@
 <template>
-  <Nav></Nav>
+  <TheHeader></TheHeader>
   <div class="container">this is home page</div>
 </template>
 
 <script setup>
-import Nav from '../components/Nav.vue'
+import TheHeader from '../components/TheHeader.vue'
 import Main from '../components/Main.vue'
 </script>
 

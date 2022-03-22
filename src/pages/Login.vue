@@ -20,7 +20,9 @@
     >
       <!-- 头部 -->
       <header class="flex flex-col items-center space-y-28 mb-16">
-        <h1 class="font-dancing font-bold text-6xl text-theme">LvShu</h1>
+        <h1>
+          <a href="/" class="font-dancing font-bold text-6xl text-theme">LvShu</a>
+        </h1>
         <h2 class="mx-auto box-border text-2xl">{{ login ? '请登录' : '请注册' }}</h2>
       </header>
       <!-- 输入部分 -->
