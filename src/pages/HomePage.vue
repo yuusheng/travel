@@ -1,6 +1,6 @@
 <template>
   <Nav></Nav>
-  <div class="">this is home page</div>
+  <div class="container">this is home page</div>
 </template>
 
 <script setup>

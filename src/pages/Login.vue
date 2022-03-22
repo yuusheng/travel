@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-screen flex justify-between items-center space-x-24">
+  <div class="w-full h-screen flex justify-center md:justify-between items-center md:space-x-24">
     <section class="h-screen overflow-hidden hidden md:block">
       <img src="@/assets/img/login.png" class="absolute h-screen w-auto" alt=" " />
       <svg width="686" height="894" viewBox="0 0 686 894" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -15,7 +15,9 @@
         </defs>
       </svg>
     </section>
-    <div class="block p-6 w-80 bg-white rounded-lg dark:bg-gray-800 dark:border-gray-700 relative -top-16 md:-left-20">
+    <div
+      class="block p-6 w-80 bg-white rounded-lg dark:bg-body md:dark:bg-gray-800 dark:border-gray-700 relative -top-16 md:-left-20"
+    >
       <!-- 头部 -->
       <header class="flex flex-col items-center space-y-28 mb-16">
         <h1 class="font-dancing font-bold text-6xl text-theme">LvShu</h1>

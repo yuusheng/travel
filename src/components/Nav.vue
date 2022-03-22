@@ -1,8 +1,8 @@
 <template>
-  <header class="flex justify-between items-center mx-auto px-6 md:px-10 lg:px-14 w-full py-3 md:py-4 lg:py-5">
+  <header class="flex justify-between items-center mx-auto px-7 md:px-10 lg:px-14 w-full py-4 md:py-4 lg:py-5">
     <ul class="flex">
       <li>
-        <a href="/"><h1 class="text-3xl md:text-4xl lg:text-5xl font-dancing text-theme">LvShu</h1></a>
+        <a href="/"><h1 class="text-4xl md:text-5xl lg:text-6xl font-dancing text-theme">LvShu</h1></a>
       </li>
     </ul>
     <section class="flex">
