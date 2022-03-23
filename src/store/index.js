@@ -1,17 +1,15 @@
 import { createStore } from 'vuex'
+import actions from './actions'
 
 const store = createStore({
-  state() {
-    return {
-      user: {
-        name: '',
-        email: '',
-        avatar: '',
-        token: '',
-      },
-      status: false,
-    }
-  },
+  state: () => ({
+    user: {
+      name: '',
+      email: '',
+      avatar: '',
+    },
+    status: false,
+  }),
   mutations: {
     login(state, user) {
       state.user = user
