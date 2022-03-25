@@ -8,10 +8,20 @@ const Blog = () => import('@/pages/Blog.vue')
 const routes = [
   // { path: '/:id', component: HomePage },
   { path: '/', component: HomePage },
-  { path: '/user', component: User },
-  { path: '/login', component: Login },
-  { path: '/about', component: About },
-  { path: '/blog', component: Blog },
+  {
+    path: '/user:id',
+    name: '用户',
+    component: User,
+    // children: [
+    //   {
+    //     path: 'profile',
+    //     component: User,
+    //   },
+    // ],
+  },
+  { path: '/login', name: '登录', component: Login },
+  { path: '/about', name: '关于', component: About },
+  { path: '/blog', name: '动态', component: Blog },
 ]
 
 const router = createRouter({

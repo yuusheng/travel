@@ -1,5 +1,5 @@
 <template>
-  <ul class="container p-10">
+  <ul class="container p-10" v-loading="loading">
     <li>名字：{{ user.name }}</li>
     <li>邮箱：{{ user.email }}</li>
     <li>生日：{{ profile.birth }}</li>
@@ -8,19 +8,21 @@
 </template>
 
 <script setup>
-import { watchEffect, ref } from 'vue'
+import { ref, onBeforeMount } from 'vue'
+import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { getProfile } from '../http/profile'
 
-const store = useStore()
 const user = ref({})
-watchEffect(() => {
-  user.value = store.state.user
-})
-
+const store = useStore()
 const profile = ref({})
-watchEffect(async () => {
+const loading = ref(true)
+const router = useRouter()
+onBeforeMount(async () => {
+  user.value = store.state.user
   profile.value = await getProfile()
+  router.push(`/user/${user.value.id}`)
+  loading.value = false
 })
 </script>
 
