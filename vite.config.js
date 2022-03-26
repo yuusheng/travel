@@ -7,6 +7,7 @@ import postcssImport from 'postcss-import'
 import autoprefixer from 'autoprefixer'
 import tailwindcss from 'tailwindcss'
 import viteCompression from 'vite-plugin-compression'
+import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 
 process.env = { ...process.env }
 // https://vitejs.dev/config/
@@ -20,6 +21,9 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
     viteCompression(),
+    Components({
+      resolvers: [AntDesignVueResolver()],
+    }),
   ],
   css: {
     postcss: {
