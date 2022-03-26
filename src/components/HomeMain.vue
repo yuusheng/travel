@@ -2,12 +2,12 @@
   <div class="md:flex lg:h-[35rem] md:h-[20rem] w-full">
     <div class="text-3xl md:text-5xl h-full md:w-96 md: flex flex-col items-center justify-center p-6 mx-7 pt-0">
       <div class="w-full">
-        <div class="font-bold text-gray-800">
+        <div class="font-bold text-gray-700">
           快来和我们一起<br />
           <span class="text-theme font-bold">旅行吧！</span>
         </div>
-        <div class="text-gray-600 text-sm md:text-xl">
-          Come and <span class="text-theme font-extrabold">travel</span> with us !
+        <div class="text-gray-400 text-sm md:text-xl">
+          Come and <span class="text-theme/90 font-extrabold">travel</span> with us !
         </div>
       </div>
       <div class="flex w-full my-3">
@@ -40,6 +40,9 @@ const router = useRouter()
 const route = useRoute()
 const inputContent = ref('')
 const inputChange = debounce(() => {
+  // if (!inputContent.value) {
+  //   route.query = null
+  // }
   router.push({ ...route.query, query: { q: inputContent.value } })
 }, 500)
 
