@@ -9,15 +9,9 @@ const routes = [
   // { path: '/:id', component: HomePage },
   { path: '/', component: HomePage },
   {
-    path: '/user:id',
+    path: '/user',
     name: '用户',
     component: User,
-    // children: [
-    //   {
-    //     path: 'profile',
-    //     component: User,
-    //   },
-    // ],
   },
   { path: '/login', name: '登录', component: Login },
   { path: '/about', name: '关于', component: About },

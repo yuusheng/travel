@@ -6,9 +6,9 @@
       <slot></slot>
     </a>
     <section class="flex justify-center flex-col mt-2 mb-4 text-gray-500">
-      <a href="/user" class="section-item">个人中心</a>
-      <a href="/contribute" class="section-item">投稿管理</a>
-      <a href="/history" class="section-item">历史</a>
+      <a href="/user" target="_blank" class="section-item">个人中心</a>
+      <a href="/contribute" target="_blank" class="section-item">投稿管理</a>
+      <a href="/history" target="_blank" class="section-item">历史</a>
     </section>
     <footer class="flex flex-row-reverse">
       <button class="bg-theme text-white px-4 py-1 rounded" @click="logout">退出登录</button>

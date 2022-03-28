@@ -1,5 +1,5 @@
 <template>
-  <ul class="container p-10" v-loading="loading">
+  <ul class="container p-10 dark:text-white" v-loading="loading">
     <li>名字：{{ user.name }}</li>
     <li>邮箱：{{ user.email }}</li>
     <li>生日：{{ profile.birth }}</li>
@@ -21,7 +21,7 @@ const router = useRouter()
 onBeforeMount(async () => {
   user.value = store.state.user
   profile.value = await getProfile()
-  router.push(`/user/${user.value.id}`)
+  // router.push(`/user/${user.value.id}`)
   loading.value = false
 })
 </script>
