@@ -41,7 +41,9 @@ export const setStorage = (token) => {
 
 // 获取localStorage
 export const getStorage = () => {
-  return localStorage.getItem('Authorization') ? localStorage.getItem('Authorization') : null
+  return localStorage.getItem('Authorization')
+    ? localStorage.getItem('Authorization')
+    : null
 }
 
 // 登出

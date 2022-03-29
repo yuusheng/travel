@@ -1,8 +1,7 @@
 <template>
   <div class="w-full md:flex md:h-[20rem] lg:h-[35rem]">
     <div
-      class="md: mx-7 flex h-full flex-col items-center justify-center p-6 pt-0 text-3xl md:w-96 md:text-5xl"
-    >
+      class="md: mx-7 flex h-full flex-col items-center justify-center p-6 pt-0 text-3xl md:w-96 md:text-5xl">
       <div class="w-full">
         <div class="font-bold text-gray-700 dark:text-white">
           快来和我们一起<br />
@@ -20,20 +19,17 @@
         <input
           class="h-8 w-4/5 rounded border border-theme px-2 text-base focus:border-0 focus:ring-blue-300"
           v-model="inputContent"
-          @input="inputChange"
-        />
+          @input="inputChange" />
         <button
           class="ml-[0.3rem] h-8 w-1/5 rounded bg-theme text-sm font-bold text-white shadow hover:bg-indigo-500"
-          @click="handleSearch"
-        >
+          @click="handleSearch">
           搜索
         </button>
       </div>
     </div>
     <!-- 右边图片 -->
     <div
-      class="relative hidden h-auto w-[calc(100%-27.5rem)] overflow-hidden md:flex md:items-center"
-    >
+      class="relative hidden h-auto w-[calc(100%-27.5rem)] overflow-hidden md:flex md:items-center">
       <img src="@/assets/img/homepage.jpeg" alt="" />
     </div>
   </div>

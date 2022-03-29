@@ -1,11 +1,9 @@
 <template>
   <div
-    class="absolute right-24 top-20 z-20 flex w-52 flex-col rounded-xl border-[2px] border-gray-100 bg-white p-3 shadow-xl"
-  >
+    class="absolute right-24 top-20 z-20 flex w-52 flex-col rounded-xl border-[2px] border-gray-100 bg-white p-3 shadow-xl">
     <a
       href="/user"
-      class="mx-auto my-1 border-b-[1px] border-gray-200/60 py-2 text-lg font-bold dark:text-black"
-    >
+      class="mx-auto my-1 border-b-[1px] border-gray-200/60 py-2 text-lg font-bold dark:text-black">
       <slot></slot>
     </a>
     <section class="mt-2 mb-4 flex flex-col justify-center text-gray-500">
