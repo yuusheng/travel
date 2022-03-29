@@ -1,31 +1,39 @@
 <template>
   <header
-    class="flex justify-between items-center mx-auto px-7 md:px-10 lg:px-14 w-full py-4 md:pt-4 md:pb-0 lg:pt-5 lg:pb-0"
-  >
+    class="mx-auto flex w-full items-center justify-between px-7 py-4 md:px-10 md:pt-4 md:pb-0 lg:px-14 lg:pt-5 lg:pb-0">
     <ul class="flex">
       <li>
-        <a href="/"><h1 class="text-4xl md:text-5xl lg:text-6xl font-dancing text-theme">LvShu</h1></a>
+        <a href="/">
+          <h1 class="font-dancing text-4xl text-theme md:text-5xl lg:text-6xl">
+            LvShu
+          </h1>
+        </a>
       </li>
     </ul>
     <section class="flex">
-      <ul class="hidden md:flex items-center relative md:right-10 divide-x divide-slate-300">
+      <ul
+        class="relative hidden items-center divide-x divide-slate-300 md:right-10 md:flex">
         <li class="nav-item text-selected-text"><a href="/">主页</a></li>
         <li class="nav-item"><a href="/blog">博客</a></li>
         <li class="nav-item"><a href="/about">关于</a></li>
       </ul>
       <ul>
-        <li class="cursor-pointer w-12 group">
+        <li class="group w-12 cursor-pointer">
           <BaseAvatar
             @click="handleClick"
             v-if="store.state.status"
-            class="md:group-hover:translate-y-6 md:group-hover:-translate-x-2 md:group-hover:w-20 md:group-hover:h-20"
-            :imgUrl="'http://' + store.state.user.avatar"
-          />
+            class="md:group-hover:h-20 md:group-hover:w-20 md:group-hover:translate-y-6 md:group-hover:-translate-x-2"
+            :imgUrl="'http://' + store.state.user.avatar" />
 
-          <a href="/login" class="px-3 py-2 bg-theme rounded font-bold text-white shadow" v-else
-            ><button>登 录</button></a
-          >
-          <TheInfo v-if="store.state.status" class="hidden md:group-hover:flex">{{ store.state.user.name }}</TheInfo>
+          <a
+            href="/login"
+            class="rounded bg-theme px-3 py-2 font-bold text-white shadow"
+            v-else>
+            <button>登 录</button>
+          </a>
+          <TheInfo v-if="store.state.status" class="hidden md:group-hover:flex">
+            {{ store.state.user.name }}
+          </TheInfo>
         </li>
       </ul>
     </section>

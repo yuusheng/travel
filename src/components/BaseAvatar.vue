@@ -1,6 +1,6 @@
 <template>
   <img
-    class="inline object-cover h-12 w-12 md:mx-6 rounded-full shadow-lg border border-theme absolute md:top-6 top-4 right-7 md:transition-all md:duration-500 ease-in-out z-50"
+    class="absolute top-4 right-7 z-50 inline h-12 w-12 rounded-full border border-theme object-cover shadow-lg ease-in-out md:top-6 md:mx-6 md:transition-all md:duration-500"
     :src="props.imgUrl"
     alt=""
   />
