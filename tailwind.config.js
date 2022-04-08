@@ -6,10 +6,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        lighter: '',
+        light: '',
         theme: '#3f3fff',
+        xl: '#4145AA',
+        xxl: '#3B3F9B',
+        secondary: '#9F9FFF',
+        bg: '#E7E7FF',
         're-theme': '#EAA031',
+        contract: '#f5c242',
         body: '#17171f',
         'selected-text': '#a3a3ff',
+        'second-text': '#ccc',
         nav: '#404053',
       },
       backgroundImage: {

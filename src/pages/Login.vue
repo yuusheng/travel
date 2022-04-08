@@ -53,7 +53,7 @@
         <label
           for="floating_email"
           class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
-          >用户名/邮箱</label
+          >{{ login ? '用户名/邮箱' : '请输入邮箱' }}</label
         >
       </div>
       <div class="group relative z-0 mb-6 w-full">
@@ -94,9 +94,16 @@
       </div>
       <footer class="mt-10 flex justify-center">
         <button
+          v-if="login"
           class="w-28 rounded bg-theme px-6 py-2 text-white"
-          @click="handleClick">
-          {{ login ? '登录' : '注册' }}
+          @click="handleLogin">
+          登录
+        </button>
+        <button
+          v-else
+          class="w-28 rounded bg-theme px-6 py-2 text-white"
+          @click="handleRegister">
+          注册
         </button>
       </footer>
     </div>
@@ -116,7 +123,7 @@ const login = ref(true)
 const store = useStore()
 
 // 登录、注册模块
-const handleClick = async () => {
+const handleLogin = async () => {
   let res = await signIn(name.value, '', pwd.value)
   store.state.user['token'] = res.token
   // 获取当前用户信息
@@ -128,7 +135,10 @@ const handleClick = async () => {
   // console.log(store.state.user)
 }
 
-const log = () => {}
+const handleRegister = async () => {
+  console.log('register')
+  if (pwd.value !== verifyPwd.value) throw new Error('两次密码不一致')
+}
 
 const changeState = () => {
   login.value = !login.value
