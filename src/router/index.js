@@ -5,7 +5,7 @@ const Login = () => import('@/pages/Login.vue')
 const About = () => import('@/pages/About.vue')
 const Blog = () => import('@/pages/Blog.vue')
 const BlogContent = () => import('@/pages/BlogContent.vue')
-const TagArticles = () => import('@/pages/TagArticles')
+const TagArticles = () => import('@/pages/TagArticles.vue')
 
 const routes = [
   // { path: '/:id', component: HomePage },

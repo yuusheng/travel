@@ -1,6 +1,6 @@
 <template>
   <span
-    class="m-1 cursor-pointer rounded-md bg-secondary px-2 py-[0.1rem] text-white hover:bg-indigo-400"
+    class="m-1 cursor-pointer rounded-md bg-secondary px-1 text-sm text-white hover:bg-indigo-400 md:px-2 md:py-[0.1rem]"
     @click="handleTag"
     ># <slot
   /></span>
