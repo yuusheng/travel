@@ -1,5 +1,5 @@
 <template>
-  <ul class="container p-10 dark:text-white" v-loading="loading">
+  <ul class="container p-10 dark:text-white">
     <li>名字：{{ user.name }}</li>
     <li>邮箱：{{ user.email }}</li>
     <li>生日：{{ profile.birth }}</li>

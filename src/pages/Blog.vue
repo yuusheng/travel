@@ -1,5 +1,5 @@
 <template>
-  <!-- <Building>Blog</Building> -->
+  <Building>Blog</Building>
 </template>
 
 <script setup>

@@ -1,8 +1,9 @@
 <template>
-  <div class="home-px my-5 w-screen">
-    <span>内容推荐</span>
-    <section class="flex w-full flex-wrap">
-      <base-card>
+  <div class="home-px flex w-screen flex-col items-center">
+    <!-- <span>内容推荐</span> -->
+
+    <section class="flex w-full flex-wrap overflow-hidden">
+      <base-card :url="'/'">
         南京一日游
         <template #footer>
           <div>footer</div>

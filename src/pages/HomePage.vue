@@ -9,7 +9,7 @@
       >晋ICP备2022003109号-1</a
     >
     &nbsp©2021 - 2022 Copyright&nbsp
-    <a href="http://lvshu.yuusheng.cn"> 旅书</a>
+    <a href="http://lvshu.yuusheng.cn">x 旅书</a>
   </footer> -->
   <base-footer></base-footer>
 </template>
