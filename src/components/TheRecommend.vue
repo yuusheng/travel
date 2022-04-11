@@ -1,5 +1,5 @@
 <template>
-  <div class="home-px mt-24 w-screen">
+  <div class="home-px mt-24">
     <span id="recommend">内容推荐</span>
 
     <section class="flex w-full flex-wrap overflow-hidden">
