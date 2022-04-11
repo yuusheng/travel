@@ -1,6 +1,6 @@
 <template>
-  <div class="home-px flex w-screen flex-col items-center">
-    <!-- <span>内容推荐</span> -->
+  <div class="home-px mt-24 w-screen">
+    <span id="recommend">内容推荐</span>
 
     <section class="flex w-full flex-wrap overflow-hidden">
       <base-card :url="'/'">

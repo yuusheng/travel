@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="flex w-full justify-center bg-xxl py-2 text-xs text-white md:py-3">
+    class="flex w-full justify-center py-2 text-xs dark:text-white md:py-3">
     <a href="https://beian.miit.gov.cn/" target="_blank"
       >晋ICP备2022003109号-1</a
     >

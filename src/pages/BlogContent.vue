@@ -3,10 +3,10 @@
     <aside
       class="fixed top-0 left-0 z-50 w-screen bg-white px-2 py-2 md:h-screen md:w-3/12 md:space-y-12 md:pl-8">
       <div
-        class="z-50 flex items-center space-x-2 md:mt-28 md:flex-col md:justify-center">
+        class="z-50 flex items-center space-x-3 md:mt-28 md:flex-col md:justify-center">
         <img
           @click="toAuthorPage"
-          class="h-10 cursor-pointer md:h-20"
+          class="h-10 w-auto cursor-pointer md:h-20"
           src="@/assets/img/Lvshu.png"
           alt="author" />
         <h1 class="hidden md:mx-auto md:block md:text-4xl md:font-bold">
@@ -18,11 +18,10 @@
         </div>
       </div>
       <!-- 目录 -->
-      <div class="hidden md:ml-8 md:block">
+      <div v-if="data.content" class="hidden md:ml-8 md:block">
         <span class="mt-10 text-gray-700">文章目录</span>
         <div
           class="ml-6 mt-7 text-[0.8rem] text-gray-400"
-          v-if="data.content"
           v-html="data.content.toc"></div>
       </div>
     </aside>

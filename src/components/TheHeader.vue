@@ -13,7 +13,7 @@
     <section class="flex">
       <ul
         class="relative hidden items-center divide-x divide-slate-300 md:flex">
-        <li class="nav-item text-selected-text"><a href="/">主页</a></li>
+        <li class="nav-item"><a href="/">主页</a></li>
         <li class="nav-item"><a href="/blog">博客</a></li>
         <li class="nav-item"><a href="/history">历史</a></li>
         <li class="nav-item"><a href="/about">关于</a></li>
@@ -63,6 +63,6 @@ const handleClick = () => {
   @apply block;
 } */
 .nav-item {
-  @apply px-6;
+  @apply px-6 hover:text-selected-text;
 }
 </style>

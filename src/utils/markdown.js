@@ -62,8 +62,8 @@ class MarkUtils {
       }" id=${anchor}>${text}</h${level}>\n`
     }
     this.#rendererMD.table = (header, body) => {
-      return `<div class="relative my-3 overflow-x-auto shadow sm:rounded-lg">
-        <table class="w-full text-left text-gray-500 dark:text-gray-400" border="10">
+      return `<div class="relative my-3 overflow-x-auto shadow-md shadow-gray-100 sm:rounded-lg">
+        <table class="w-full text-left text-gray-500">
           <thead class="bg-gray-50 uppercase text-gray-900 dark:bg-gray-700 dark:text-gray-400">
             ${header}
           </thead>
