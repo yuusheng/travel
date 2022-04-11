@@ -1,6 +1,6 @@
 <template>
   <div
-    class="absolute right-24 top-20 z-20 flex w-52 flex-col rounded-xl border-[2px] border-gray-100 bg-white p-3 shadow-lg shadow-slate-300/90">
+    class="absolute right-24 top-20 z-20 flex w-52 flex-col rounded-xl border-[2px] border-gray-100 bg-white p-3 shadow">
     <a
       href="/user"
       class="mx-auto my-1 border-b-[1px] border-gray-200/60 py-2 text-lg font-bold dark:text-black">
@@ -12,7 +12,7 @@
       <a href="/history" target="_blank" class="section-item">历史</a>
     </section>
     <footer class="flex flex-row-reverse">
-      <button class="rounded bg-theme px-4 py-1 text-white" @click="logout">
+      <button class="rounded bg-theme px-4 py-1 text-white" @click="signOut">
         退出登录
       </button>
     </footer>
@@ -21,10 +21,6 @@
 
 <script setup>
 import { signOut } from '../http/user'
-
-const logout = () => {
-  signOut()
-}
 </script>
 
 <style scoped>

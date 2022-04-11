@@ -14,6 +14,7 @@ const routes = [
     path: '/user',
     name: '用户',
     component: User,
+    title: '用户',
   },
   { path: '/login', name: '登录', component: Login },
   { path: '/about', name: '关于', component: About },
