@@ -9,8 +9,6 @@ module.exports = {
         lighter: '',
         light: '',
         theme: '#3f3fff',
-        xl: '#4145AA',
-        xxl: '#3B3F9B',
         secondary: '#9F9FFF',
         bg: '#E7E7FF',
         're-theme': '#EAA031',
