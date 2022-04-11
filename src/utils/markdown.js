@@ -1,3 +1,4 @@
+// 参考：https://www.cherylgood.cn/detail/5bdaf4722382b4646c27143b.html
 import { marked } from 'marked'
 
 const tocObj = {
@@ -17,7 +18,7 @@ const tocObj = {
       result += '</ul>\n'
     }
     const addLI = (anchor, text) => {
-      result += `<li><a class="hover:text-gray-700" href="${anchor}">${text}<a></li>\n`
+      result += `<li class="hover:text-gray-700 list-none"><a href="${anchor}">${text}<a></li>\n`
     }
     this.toc.forEach((item) => {
       let levelIndex = levelStack.indexOf(item.level)
@@ -57,7 +58,7 @@ class MarkUtils {
     this.#rendererMD.heading = (text, level, raw) => {
       let anchor = tocObj.add(text, level)
       return `<h${level} class="mb-3 ${
-        level >= 2 ? 'font-bold' : ''
+        level >= 2 ? 'font-bold scroll-mt-1' : ''
       }" id=${anchor}>${text}</h${level}>\n`
     }
     this.#rendererMD.table = (header, body) => {
@@ -71,10 +72,10 @@ class MarkUtils {
       </div>`
     }
     this.#rendererMD.blockquote = (quote) => {
-      return `<blockquote class="p-4 italic border-l-4 bg-neutral-100 text-neutral-600 border-neutral-400 quote mb-3">${quote}</blockquote>`
+      return `<blockquote  class="p-4 italic border-l-4 bg-neutral-100 text-neutral-600 border-neutral-400 quote mb-3">${quote}</blockquote>`
     }
     this.#rendererMD.paragraph = (text) => {
-      return `<p class="mb-2">${text}</p>`
+      return `<p class=" w-full overflow-scroll">${text}</p>`
     }
     this.#rendererMD.strong = (text) => {
       return `<strong class="font-bold mx-[0.1rem]">${text}</strong>`
