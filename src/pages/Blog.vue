@@ -1,8 +1,8 @@
 <template>
   <the-header></the-header>
-  <!-- <building>Blog</building> -->
-  <base-editor></base-editor>
-  <base-markdown-editor></base-markdown-editor>
+  <building>Blog</building>
+
+  <!-- <base-markdown-editor></base-markdown-editor> -->
 </template>
 
 <script setup>

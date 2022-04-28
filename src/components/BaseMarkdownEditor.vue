@@ -35,6 +35,7 @@ watch(
 //   console.log(value)
 // }
 
+// 发布文章
 const store = useStore()
 const handleSubmit = async () => {
   // todo 数据校验
@@ -43,7 +44,7 @@ const handleSubmit = async () => {
     author: store.state.user.name,
     content: articleContent.value,
   }
-
+  console.log(articleContent.value)
   await uploadArticle(data)
 }
 </script>

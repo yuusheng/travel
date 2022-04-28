@@ -19,6 +19,7 @@
         <input
           class="h-8 w-4/5 rounded border border-theme px-2 text-base focus:border-0 focus:ring-blue-300"
           v-model="inputContent"
+          v-focus="true"
           @input="inputChange" />
         <button
           class="ml-[0.3rem] h-8 w-1/5 rounded bg-theme text-sm font-bold text-white shadow hover:bg-indigo-500"
