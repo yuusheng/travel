@@ -103,7 +103,6 @@ class MarkUtils {
     if (data) {
       let content = marked(data)
       let toc = tocObj.toHTML()
-      console.log(toc)
       return { content, toc }
     } else {
       return null

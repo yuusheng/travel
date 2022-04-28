@@ -7,6 +7,7 @@ const store = createStore({
       name: '',
       email: '',
       avatar: '',
+      id: '',
     },
     status: false,
   }),

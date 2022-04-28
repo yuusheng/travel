@@ -6,7 +6,8 @@ const Blog = () => import('@/pages/Blog.vue')
 const BlogContent = () => import('@/pages/BlogContent.vue')
 const TagArticles = () => import('@/pages/TagArticles.vue')
 const History = () => import('@/pages/History.vue')
-const Profile = () => import('@/pages/Profile')
+const Profile = () => import('@/pages/Profile.vue')
+const Contribute = () => import('@/pages/Contribute.vue')
 
 const routes = [
   {
@@ -35,6 +36,7 @@ const routes = [
     path: '/blog/:id',
     name: '详情',
     component: BlogContent,
+    meta: { title: '博客' },
   },
   {
     path: '/tag/:name',
@@ -45,6 +47,13 @@ const routes = [
     path: '/history',
     name: '历史记录',
     component: History,
+    meta: { title: '历史记录' },
+  },
+  {
+    path: '/contribute',
+    name: '投稿管理',
+    component: Contribute,
+    meta: { title: '投稿管理' },
   },
 ]
 

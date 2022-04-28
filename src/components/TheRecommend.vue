@@ -3,22 +3,23 @@
     <span id="recommend">内容推荐</span>
 
     <section class="flex w-full flex-wrap overflow-hidden">
-      <base-card :url="'/'">
+      <base-card
+        :url="`/blog/${article._id}`"
+        :imgSrc="'http:' + article.author.avatar"
+        :key="article._id"
+        v-for="article in articleList">
         南京一日游
-        <template #footer>
-          <div>footer</div>
+        <template #title>
+          {{ article.title }}
         </template>
-      </base-card>
-      <base-card>
-        name
         <template #footer>
-          <div>footer</div>
+          {{ article.create_time }}
         </template>
-      </base-card>
-      <base-card>
-        name
-        <template #footer>
-          <div>footer</div>
+        <template #desc>
+          {{ article.desc }}
+        </template>
+        <template #user-name>
+          {{ article.author.name }}
         </template>
       </base-card>
     </section>
@@ -26,7 +27,18 @@
 </template>
 
 <script setup>
+import { onMounted, ref } from 'vue'
+import { useStore } from 'vuex'
+import { getArticleList } from '../http/aritcle'
+
 import BaseCard from './BaseCard.vue'
+
+const store = useStore()
+const articleList = ref([])
+onMounted(async () => {
+  articleList.value = await getArticleList('6231ce1348a3ea31bb4e5246')
+  console.log(articleList.value)
+})
 </script>
 
 <style lang="scss" scoped></style>

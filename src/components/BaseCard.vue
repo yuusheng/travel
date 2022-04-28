@@ -8,29 +8,15 @@
         :src="imgSrc" />
     </div>
     <div>
-      <h2 class="text-2xl font-semibold text-gray-800 md:text-3xl">
-        Design Tools
+      <h2 class="text-xl font-semibold text-gray-800 md:text-2xl">
         <slot name="title"></slot>
       </h2>
       <p class="mt-2 h-16 truncate text-gray-600">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolores
-        deserunt ea doloremque natus error, rerum quas odio quaerat nam ex
-        commodi hic, suscipit in a veritatis pariatur minus consequuntur! Lorem
-        ipsum dolor sit amet consectetur adipisicing elit. Quae dolores deserunt
-        ea doloremque natus error, rerum quas odio quaerat nam ex commodi hic,
-        suscipit in a veritatis pariatur minus consequuntur! Lorem ipsum dolor
-        sit amet consectetur adipisicing elit. Quae dolores deserunt ea
-        doloremque natus error, rerum quas odio quaerat nam ex commodi hic,
-        suscipit in a veritatis pariatur minus consequuntur! Lorem ipsum dolor
-        sit amet consectetur adipisicing elit. Quae dolores deserunt ea
-        doloremque natus error, rerum quas odio quaerat nam ex commodi hic,
-        suscipit in a veritatis pariatur minus consequuntur!
         <slot name="desc"></slot>
       </p>
     </div>
     <div class="mt-4 flex justify-end">
-      <a href="#" class="text-xl font-medium text-indigo-500"
-        >John Doe
+      <a href="#" class="text-xl font-medium text-indigo-500">
         <slot name="user-name"></slot>
       </a>
     </div>
