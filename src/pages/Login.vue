@@ -140,6 +140,7 @@ const handleRegister = async () => {
   if (pwd.value !== verifyPwd.value) throw new Error('两次密码不一致')
 }
 
+// 改变登录、注册
 const changeState = () => {
   login.value = !login.value
 }

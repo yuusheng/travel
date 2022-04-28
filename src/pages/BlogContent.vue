@@ -60,7 +60,7 @@ const route = useRoute()
 const blogId = ref(route.params.id)
 const data = ref({})
 
-axios.get(`/api/article/${blogId.value}`).then((res) => {
+axios.get(`/api/article/detail/${blogId.value}`).then((res) => {
   data.value = res.data
   data.value.content = markdown.marked(data.value.content)
   data.value.create_time = dayjs(data.value.create_time).format(

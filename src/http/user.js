@@ -5,10 +5,21 @@ import { useStore } from 'vuex'
 export const signIn = async (name = '', email = '', password) => {
   let data = {
     name,
-    email,
+    // email,
     password,
   }
+
   let res = await axios.post('/api/users/login', data)
+  // let data = new FormData()
+  // data.append('name', name)
+  // data.append('password', password)
+
+  // let res = await axios({
+  //   method: 'post',
+  //   url: '/api/users/login',
+  //   data,
+  //   headers: { 'Content-Type': 'multipart/form-data' },
+  // })
   if (res.data.success) {
     // 设置localStorage
     setStorage(res.data.token)

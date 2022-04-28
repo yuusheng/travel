@@ -28,8 +28,7 @@
       </div>
     </div>
     <!-- 右边图片 -->
-    <div
-      class="relative hidden h-auto w-[calc(100%-27.5rem)] overflow-hidden md:flex md:items-center">
+    <div class="img-container">
       <img src="@/assets/img/homepage.jpeg" alt="" />
     </div>
   </div>
@@ -55,4 +54,8 @@ const handleSearch = () => {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.img-container {
+  @apply relative hidden h-auto w-[calc(100%-27.5rem)] overflow-hidden md:block md:bg-center;
+}
+</style>

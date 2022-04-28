@@ -13,6 +13,7 @@
     "axios": "^0.26.1",
     "dayjs": "^1.11.0",
     "marked": "^4.0.13",
+    "mavon-editor": "^3.0.0-beta",
     "postcss-import": "^14.0.2",
     "tailwindcss": "^3.0.23",
     "vue": "^3.2.25",
@@ -20,6 +21,7 @@
     "vuex": "^4.0.2"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.182",
     "@vitejs/plugin-vue": "^2.2.0",
     "prettier": "^2.6.1",
     "prettier-plugin-tailwindcss": "^0.1.8",

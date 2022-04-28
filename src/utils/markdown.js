@@ -75,7 +75,7 @@ class MarkUtils {
       return `<blockquote  class="p-4 italic border-l-4 bg-neutral-100 text-neutral-600 border-neutral-400 quote mb-3">${quote}</blockquote>`
     }
     this.#rendererMD.paragraph = (text) => {
-      return `<p class=" w-full overflow-scroll">${text}</p>`
+      return `<p class="w-full">${text}</p>`
     }
     this.#rendererMD.strong = (text) => {
       return `<strong class="font-bold mx-[0.1rem]">${text}</strong>`
