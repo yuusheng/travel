@@ -5,7 +5,7 @@
     <div class="-mt-16 flex justify-center md:justify-end">
       <img
         class="h-20 w-20 rounded-full border-2 border-theme object-cover"
-        :src="imgSrc" />
+        v-lazy="imgSrc" />
     </div>
     <div>
       <h2 class="text-xl font-semibold text-gray-800 md:text-2xl">
