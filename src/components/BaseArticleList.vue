@@ -1,35 +1,33 @@
 <template>
-  <div class="flex w-8/12 rounded bg-slate-700 px-5 py-2">
+  <a
+    :href="`/blog/${id}`"
+    class="mx-3 my-5 flex h-24 w-8/12 justify-around space-x-4 rounded px-7 py-2 shadow-sm">
     <!-- 封面 -->
-    <section class="h-full w-20">
-      <img src="" alt="" />
-    </section>
-    <section>
-      <h2>title</h2>
-      <div>
-        <div>desc</div>
-        <div>time</div>
+    <div class="h-auto w-auto">
+      <img class="h-full bg-center" v-lazy="imgSrc" alt="加载中" />
+    </div>
+    <div class="flex w-4/5 flex-col">
+      <h2>{{ title }}</h2>
+      <div class="flex w-full justify-between text-sm text-gray-400">
+        <div class="">{{ desc }}</div>
+        <div class="">{{ time }}</div>
       </div>
-    </section>
-  </div>
+    </div>
+  </a>
 </template>
 
 <script setup>
-import { watch } from '@vue/runtime-core'
+import { watch, ref } from '@vue/runtime-core'
 import dayjs from 'dayjs'
 const props = defineProps({
+  id: String,
   title: String,
   desc: String,
   time: String,
-  imgSrc: String,
+  imgSrc: { type: String, default: '/src/assets/img/Lvshu.png' },
 })
 
-watch(
-  () => props.time,
-  () => {
-    props.time = dayjs(props.time).format('YY-MM-DD hh:mm')
-  }
-)
+const time = ref(dayjs(props.time).format('YY-MM-DD hh:mm'))
 </script>
 
 <style scoped></style>

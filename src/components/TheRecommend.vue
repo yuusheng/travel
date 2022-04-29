@@ -29,14 +29,14 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import { useStore } from 'vuex'
-import { getArticleList } from '../http/aritcle'
+import { getArticleListByAuthorId } from '../http/aritcle'
 
 import BaseCard from './BaseCard.vue'
 
 const store = useStore()
 const articleList = ref([])
 onMounted(async () => {
-  articleList.value = await getArticleList('6231ce1348a3ea31bb4e5246')
+  articleList.value = await getArticleListByAuthorId('6231ce1348a3ea31bb4e5246')
   console.log(articleList.value)
 })
 </script>

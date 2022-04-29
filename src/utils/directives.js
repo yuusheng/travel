@@ -20,7 +20,7 @@ const directives = [
               observe.unobserve(el)
               // 处理图片加载失败的情况, 如果图片加载失败就显示默认图片
               el.onerror = () => {
-                el.src = '@/assets/img/Lvshu.png'
+                el.src = '/src/assets/img/Lvshu.png'
               }
               // 把指令的值设置给el元素的src属性 binding.value就是指令传递的值
               el.src = binding.value
