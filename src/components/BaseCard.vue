@@ -1,7 +1,7 @@
 <template>
   <div
     @click="handleDetail"
-    class="mx-[1%] mt-16 mb-10 max-w-sm rounded-lg bg-white py-4 px-8 shadow-lg md:mt-12 md:w-[31%] md:max-w-none">
+    class="mx-[1%] mt-16 mb-10 max-w-sm cursor-pointer rounded-lg bg-white py-4 px-8 shadow-lg md:mt-12 md:w-[31%] md:max-w-none">
     <div class="-mt-16 flex justify-center md:justify-end">
       <img
         class="h-20 w-20 rounded-full border-2 border-theme object-cover"

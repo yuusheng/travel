@@ -37,7 +37,6 @@ const store = useStore()
 const articleList = ref([])
 onMounted(async () => {
   articleList.value = await getArticleListByAuthorId('6231ce1348a3ea31bb4e5246')
-  console.log(articleList.value)
 })
 </script>
 
