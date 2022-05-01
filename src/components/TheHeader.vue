@@ -59,9 +59,6 @@ const handleClick = () => {
 </script>
 
 <style>
-/* .avatar:hover .show {
-  @apply block;
-} */
 .nav-item {
   @apply px-6 hover:text-selected-text;
 }

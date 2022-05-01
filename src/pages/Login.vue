@@ -43,49 +43,33 @@
         </h2>
       </header>
       <!-- 输入部分 -->
-      <div class="group relative z-0 mb-6 w-full">
-        <input
-          name="floating_email"
-          class="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:text-white dark:focus:border-blue-500"
-          placeholder=" "
-          required
-          v-model="name" />
-        <label
-          for="floating_email"
-          class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
-          >{{ login ? '用户名/邮箱' : '请输入邮箱' }}</label
-        >
+      <BaseInput
+        v-model="name"
+        :label="login ? '用户名/邮箱' : '请输入邮箱'"
+        :error="errorCode"
+        :errorList="[101]" />
+      <div v-if="!login" class="flex">
+        <BaseInput
+          v-model="verifyCode"
+          label="邮箱验证码"
+          :error="errorCode"
+          :errorList="[104, 105]" />
+        <button @click="handleGetVerifyCode" class="w-4/5 text-sm">
+          获取验证码
+        </button>
       </div>
-      <div class="group relative z-0 mb-6 w-full">
-        <input
-          type="password"
-          name="floating_password"
-          id="floating_password"
-          class="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:text-white dark:focus:border-blue-500"
-          placeholder=" "
-          required
-          v-model="pwd" />
-        <label
-          for="floating_password"
-          class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
-          >密码</label
-        >
-      </div>
-      <div class="group relative z-0 mb-6 w-full" v-if="!login">
-        <input
-          type="password"
-          name="repeat_password"
-          id="floating_repeat_password"
-          class="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:text-white dark:focus:border-blue-500"
-          placeholder=" "
-          required
-          v-model="verifyPwd" />
-        <label
-          for="floating_repeat_password"
-          class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
-          >确认密码</label
-        >
-      </div>
+      <BaseInput
+        v-model="pwd"
+        pwd
+        label="密码"
+        :error="errorCode"
+        :errorList="[102]" />
+      <BaseInput
+        v-model="verifyPwd"
+        pwd
+        v-if="!login"
+        label="确认密码"
+        :error="errorCode" />
       <!-- 按钮部分 -->
       <div class="flex flex-row-reverse">
         <a class="cursor-pointer text-xs text-blue-600" @click="changeState">{{
@@ -113,31 +97,83 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { currentUser, signIn } from '../http/user'
+import { currentUser, getVerifyCode, signIn, signUp } from '../http/user'
 import { useStore } from 'vuex'
+import BaseInput from '../components/BaseInput.vue'
+
 const name = ref('')
 const pwd = ref('')
+const verifyCode = ref('')
 const verifyPwd = ref('')
 const router = useRouter()
 const login = ref(true)
 const store = useStore()
+const errorCode = ref(100)
+
+// 去除空格
+const handleBlank = (str) => {
+  let reg = /\s*/g
+  return str.replace(reg, '')
+}
+
+// 邮箱验证
+const isEmail = (str) => {
+  let reg = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
+  return reg.test(str)
+}
 
 // 登录、注册模块
 const handleLogin = async () => {
-  let res = await signIn(name.value, '', pwd.value)
-  store.state.user['token'] = res.token
-  // 获取当前用户信息
-  let user = await currentUser(res.token)
-  // 修改state中的user
-  store.commit('login', user)
-  // 重定向到homepage
-  router.push('/')
-  // console.log(store.state.user)
+  // 空格处理
+  name.value = handleBlank(name.value)
+  pwd.value = handleBlank(pwd.value)
+
+  // 判断是邮箱还是用户名
+  let res = isEmail(name.value)
+    ? await signIn('', name.value, pwd.value)
+    : await signIn(name.value, '', pwd.value)
+
+  if (res.success) {
+    store.state.user['token'] = res.token
+    // 获取当前用户信息
+    let user = await currentUser(res.token)
+    // 修改state中的user
+    store.commit('login', user)
+    // 重定向到homepage
+    router.push('/')
+  } else {
+    errorCode.value = res.code
+  }
+}
+
+const handleGetVerifyCode = async () => {
+  name.value = handleBlank(name.value)
+
+  if (!isEmail(name.value)) {
+    alert('请输入正确的邮箱地址')
+    return
+  }
+  let res = await getVerifyCode(name.value)
+  if (res.success) {
+    console.log(res.msg)
+  }
 }
 
 const handleRegister = async () => {
-  console.log('register')
-  if (pwd.value !== verifyPwd.value) throw new Error('两次密码不一致')
+  // 空格处理
+  name.value = handleBlank(name.value)
+  pwd.value = handleBlank(pwd.value)
+  verifyPwd.value = handleBlank(verifyPwd.value)
+  verifyCode.value = handleBlank(verifyCode.value)
+
+  if (pwd.value !== verifyPwd.value) {
+    alert('请保持两次输入密码一致')
+    return
+  }
+  let res = await signUp(name.value, verifyCode.value, pwd.value)
+  if (res.success) {
+    // todo 成功
+  } else errorCode.value = res.code
 }
 
 // 改变登录、注册

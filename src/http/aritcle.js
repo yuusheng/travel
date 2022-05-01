@@ -20,7 +20,7 @@ export async function uploadArticle(data) {
  * @return {Array} 博客列表
  */
 export async function getArticleListByAuthorId(user) {
-  let articleList = await getArticleList(`/api/article/${user}`)
+  let articleList = await getArticleList(`/api/article/user/${user}`)
   return articleList
 }
 
@@ -42,12 +42,12 @@ export async function getArticleListByTag(tag) {
 async function getArticleList(api) {
   try {
     let res = await axios.get(api)
-    if (res.data.success) {
-      const { articleList } = res.data
+    if (await res.data.success) {
+      const { articleList } = await res.data
       return articleList
     } else {
       alert(res.data.msg)
-      return []
+      throw []
     }
   } catch (e) {
     alert(e.message)
