@@ -47,16 +47,20 @@
         v-model="name"
         :label="login ? '用户名/邮箱' : '请输入邮箱'"
         :error="errorCode"
-        :errorList="[101]" />
+        :errorList="[101, 120, 121]"
+        :changeFn="emailTest" />
       <div v-if="!login" class="flex">
         <BaseInput
           v-model="verifyCode"
           label="邮箱验证码"
           :error="errorCode"
           :errorList="[104, 105]" />
-        <button @click="handleGetVerifyCode" class="w-4/5 text-sm">
+        <BaseButton
+          :disabled="verifyCodeDisable"
+          type="verify"
+          @click="handleGetVerifyCode">
           获取验证码
-        </button>
+        </BaseButton>
       </div>
       <BaseInput
         v-model="pwd"
@@ -69,7 +73,8 @@
         pwd
         v-if="!login"
         label="确认密码"
-        :error="errorCode" />
+        :error="errorCode"
+        :errorList="[122]" />
       <!-- 按钮部分 -->
       <div class="flex flex-row-reverse">
         <a class="cursor-pointer text-xs text-blue-600" @click="changeState">{{
@@ -77,30 +82,24 @@
         }}</a>
       </div>
       <footer class="mt-10 flex justify-center">
-        <button
-          v-if="login"
-          class="w-28 rounded bg-theme px-6 py-2 text-white"
-          @click="handleLogin">
-          登录
-        </button>
-        <button
-          v-else
-          class="w-28 rounded bg-theme px-6 py-2 text-white"
-          @click="handleRegister">
-          注册
-        </button>
+        <BaseButton v-if="login" type="login" @click="handleLogin"
+          >登录</BaseButton
+        >
+        <BaseButton v-else type="login" @click="handleRegister"
+          >注册</BaseButton
+        >
       </footer>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { currentUser, getVerifyCode, signIn, signUp } from '../http/user'
 import { useStore } from 'vuex'
 import BaseInput from '../components/BaseInput.vue'
-
+import BaseButton from '../components/BaseButton.vue'
 const name = ref('')
 const pwd = ref('')
 const verifyCode = ref('')
@@ -109,7 +108,9 @@ const router = useRouter()
 const login = ref(true)
 const store = useStore()
 const errorCode = ref(100)
+const verifyCodeDisable = ref(true)
 
+console.log(verifyCodeDisable.value)
 // 去除空格
 const handleBlank = (str) => {
   let reg = /\s*/g
@@ -120,6 +121,22 @@ const handleBlank = (str) => {
 const isEmail = (str) => {
   let reg = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
   return reg.test(str)
+}
+
+// 测试邮箱地址
+const emailTest = () => {
+  if (!login.value) {
+    if (!isEmail(name.value)) {
+      errorCode.value = 120
+      verifyCodeDisable.value = true
+    } else {
+      verifyCodeDisable.value = false
+      errorCode.value = 100
+    }
+  } else {
+    errorCode.value = 121
+    verifyCodeDisable.value = true
+  }
 }
 
 // 登录、注册模块
@@ -179,6 +196,7 @@ const handleRegister = async () => {
 // 改变登录、注册
 const changeState = () => {
   login.value = !login.value
+  errorCode.value = 100
 }
 </script>
 
