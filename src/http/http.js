@@ -51,4 +51,6 @@ http.interceptors.response.use(
   }
 )
 
-export default http
+const { delete: del, get, post, patch, put } = http
+
+export default { del, get, post, patch, put }

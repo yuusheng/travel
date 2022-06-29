@@ -29,7 +29,7 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import { useStore } from 'vuex'
-import { getArticleListByAuthorId } from '../http/aritcle'
+import { getArticleListByAuthorId } from '../http/article'
 
 import BaseCard from './BaseCard.vue'
 

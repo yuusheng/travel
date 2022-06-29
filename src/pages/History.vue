@@ -13,7 +13,7 @@
 import Building from './Building.vue'
 import BaseArticleList from '../components/BaseArticleList.vue'
 import { onMounted, ref } from 'vue'
-import { getArticleListByAuthorId } from '../http/aritcle'
+import { getArticleListByAuthorId } from '../http/article'
 const articles = ref([])
 
 onMounted(async () => {

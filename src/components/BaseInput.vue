@@ -19,7 +19,7 @@
 <script setup>
 import { computed } from 'vue'
 
-import code from '../http/code'
+import code from '@/http'
 
 const props = defineProps({
   label: String,
