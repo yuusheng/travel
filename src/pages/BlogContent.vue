@@ -1,5 +1,7 @@
 <template>
-  <main class="flex-col md:mt-0 md:flex md:flex-row md:justify-between">
+  <main
+    class="min-h-screen flex-col md:mt-0 md:flex md:flex-row md:justify-between"
+    v-load="loading">
     <aside
       class="fixed top-0 left-0 z-50 w-screen bg-white px-2 py-2 md:h-screen md:w-3/12 md:space-y-12 md:pl-8">
       <div
@@ -59,16 +61,22 @@ import markdown from '../utils/markdown'
 const route = useRoute()
 const blogId = ref(route.params.id)
 const data = ref({})
+const loading = ref(true)
 
 axios.get(`/api/article/detail/${blogId.value}`).then((res) => {
   data.value = res.data
+  // 处理markdown
   data.value.content = markdown.marked(data.value.content)
+  // 修改日期格式
   data.value.create_time = dayjs(data.value.create_time).format(
     'YYYY月MM日DD h:m'
   )
   data.value.update_time = dayjs(data.value.update_time).format(
     'YYYY月MM日DD h:m'
   )
+  // 更改标题为当前页面标题
+  document.title = data.value.title
+  loading.value = false
 })
 
 // update_time是否显示

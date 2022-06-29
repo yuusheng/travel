@@ -3,7 +3,9 @@ import { marked } from 'marked'
 
 const tocObj = {
   add(text, level) {
-    let anchor = `#toc${level}${++this.index}`
+    // let anchor = `#toc${level}${++this.index}`
+    ++this.index
+    let anchor = `#${text}`
     this.toc.push({ anchor, level, text })
     return anchor.split('').splice(1).join('')
   },

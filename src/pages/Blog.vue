@@ -1,7 +1,5 @@
 <template>
   <the-header></the-header>
-  <BaseButton />
-  <base-button type="small">large</base-button>
   <building>Blog</building>
 
   <!-- <base-markdown-editor></base-markdown-editor> -->
