@@ -1,17 +1,13 @@
-import axios from 'axios'
+import { get, post } from './http'
 
 /**
  * 发布文章
  * @param {Object} data 文章内容
  */
 export async function uploadArticle(data) {
-  try {
-    let res = await axios.post('/api/article', data)
-    // todo handle error
-    alert(res)
-  } catch (e) {
-    alert(e.message)
-  }
+  let res = await post('/api/article', data)
+  // todo handle error
+  alert(res)
 }
 
 /**
@@ -40,17 +36,12 @@ export async function getArticleListByTag(tag) {
  * @returns {Array} 文章列表或空数组
  */
 async function getArticleList(api) {
-  try {
-    let res = await axios.get(api)
-    if (await res.data.success) {
-      const { articleList } = await res.data
-      return articleList
-    } else {
-      alert(res.data.msg)
-      throw []
-    }
-  } catch (e) {
-    alert(e.message)
-    return []
+  let res = await get(api)
+  if (res?.success) {
+    const { articleList } = res
+    return articleList
+  } else {
+    alert(res.msg)
+    throw []
   }
 }

@@ -8,6 +8,7 @@ import autoprefixer from 'autoprefixer'
 import tailwindcss from 'tailwindcss'
 import viteCompression from 'vite-plugin-compression'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
+import { resolve } from 'upath'
 
 // https://vitejs.dev/config/
 const config = defineConfig(({ mode }) => {
@@ -16,16 +17,16 @@ const config = defineConfig(({ mode }) => {
   return {
     plugins: [
       vue(),
-      // AutoImport({
-      //   resolvers: [ElementPlusResolver()],
-      // }),
-      // Components({
-      //   resolvers: [ElementPlusResolver()],
-      // }),
-      // viteCompression(),
-      // Components({
-      //   resolvers: [AntDesignVueResolver()],
-      // }),
+      AutoImport({
+        resolvers: [ElementPlusResolver()],
+      }),
+      Components({
+        resolvers: [ElementPlusResolver()],
+      }),
+      viteCompression(),
+      Components({
+        resolvers: [AntDesignVueResolver()],
+      }),
     ],
     css: {
       postcss: {
@@ -34,7 +35,7 @@ const config = defineConfig(({ mode }) => {
     },
     resolve: {
       alias: {
-        '@': '/src',
+        '@': resolve(__dirname, '/src'),
       },
     },
     server: {

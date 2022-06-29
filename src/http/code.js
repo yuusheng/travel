@@ -1,4 +1,4 @@
-const code = {
+export const code = {
   100: '成功',
   101: '用户不存在',
   102: '密码错误',
@@ -10,5 +10,3 @@ const code = {
   121: '请输入邮箱',
   122: '两次密码输入不一致',
 }
-
-export default code

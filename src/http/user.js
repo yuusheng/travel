@@ -1,4 +1,4 @@
-import axios from 'axios'
+import { post, get } from './http'
 import { useStore } from 'vuex'
 
 // 登录
@@ -9,30 +9,26 @@ export const signIn = async (name = '', email = '', password) => {
     password,
   }
 
-  try {
-    let res = await axios.post('/api/users/login', data)
-    console.log(res)
-    if (res.data.success) {
-      // 设置localStorage
-      setStorage(res.data.token)
-      // 返回token
-    }
-    return res.data
-  } catch (e) {
-    alert(e.msg)
+  let res = await post('/api/users/login', data)
+  console.log(res)
+  if (res.success) {
+    // 设置localStorage
+    setStorage(res.token)
+    // 返回token
   }
+  return res
 }
 
 // 注册
 export const getVerifyCode = async (email) => {
   const data = { email }
   try {
-    let res = await axios.post('/api/users/auth-code', data)
+    let res = await post('/api/users/auth-code', data)
     if (res.data.success) {
-      return res.data
+      return res
     } else {
-      alert(res.data.msg)
-      return res.data
+      alert(res.msg)
+      return res
     }
   } catch (e) {
     alert(e.message)
@@ -42,25 +38,22 @@ export const getVerifyCode = async (email) => {
 
 export const signUp = async (email, verifyCode, password) => {
   let data = { email, name: 'kevin', code: verifyCode, password }
-  try {
-    let res = await axios.post('/api/users/register', data)
-    // if (res.data.success) {
-    //   console.log(res)
-    // }
-    return res.data
-    // todo 注册之后如果成功要进行登录
-    console.log(res.data)
-  } catch (e) {
-    alert(e.message)
-  }
+
+  let res = await post('/api/users/register', data)
+  // if (res.data.success) {
+  //   console.log(res)
+  // }
+  return res
+  // todo 注册之后如果成功要进行登录
+  console.log(res.data)
 }
 
 // 当前用户状态
 export const currentUser = async (token) => {
-  let res = await axios.get('/api/users/current', {
+  let res = await get('/api/users/current', {
     headers: { Authorization: token },
   })
-  return res.data
+  return res
 }
 
 // 设置localStorage

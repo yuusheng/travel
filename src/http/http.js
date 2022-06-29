@@ -2,7 +2,7 @@ import axios from 'axios'
 import { ElMessage } from 'element-plus'
 
 const http = axios.create({
-  timeout: 50000,
+  timeout: 10000,
 })
 
 // 数据请求拦截
@@ -53,4 +53,4 @@ http.interceptors.response.use(
 
 const { delete: del, get, post, patch, put } = http
 
-export default { del, get, post, patch, put }
+export { del, get, post, patch, put }
