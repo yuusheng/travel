@@ -34,7 +34,7 @@ jobs:
         run: yarn build
 
       - name: copy dist file with scp
-        uses: appleboy/scp-action@v0.0.1
+        uses: easingthemes/ssh-deploy@v2.1.5
         with:
           host: ${{ secrets.REMOTE_HOST }}
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
