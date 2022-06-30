@@ -34,7 +34,7 @@ jobs:
         run: yarn build
 
       - name: copy dist file with scp
-        uses: easingthemes/ssh-deploy@v2.1.11
+        uses: easingthemes/ssh-deploy@v2.1.5
         run: ls
         with:
           # REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
