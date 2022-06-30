@@ -1,35 +1,38 @@
-# This is a basic workflow to help you get started with Actions
-
 name: deploy-website
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
-
-  # Allows you to run this workflow manually from the Actions tab
+    branches:
+      - main
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: centos-7
-
+    runs-on: ubuntu-latest
+    env:
+      NODE_VERSION: '14'
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: check
+        uses: actions/checkout@v3
+
       - name: install nodejs
         uses: actions/setup-node@v3.1.1
         with:
-              node-version: "14.x"
+          node-version: '14.x'
+
+      - name: Yarn CLI
+        uses: CultureHQ/actions-yarn@v1.0.1
+
       - name: install deps
-        run: npm install
+        run: yarn
+
       - name: build app
-        run: npm run build
+        run: yarn build
+
       - name: copy dist file with scp
         uses: appleboy/scp-action@v0.0.1
         with:
@@ -37,8 +40,5 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           password: ${{ secrets.REMOTE_PASSWORD }}
           port: 22
-          source: "dist/"
+          source: 'dist/'
           target: ${{ secrets.REMOTE_TARGET }}
-
-        
-      
