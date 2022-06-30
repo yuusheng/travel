@@ -36,7 +36,8 @@ jobs:
       - name: copy dist file with scp
         uses: easingthemes/ssh-deploy@v2.1.5
         with:
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          # REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_HOST: '39.103.214.145'
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
           REMOTE_USER: 'root'
           REMOTE_PORT: 22
