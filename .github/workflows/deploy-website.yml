@@ -38,9 +38,8 @@ jobs:
         with:
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          # password: ${{ secrets.REMOTE_PASSWORD }}
+          REMOTE_USER: 'root'
           REMOTE_PORT: 22
-          ARGS: '-avz --delete'
-          SOURCE: 'dist'
-          TARGET: ${{ secrets.REMOTE_TARGET }}
+          ARGS: '-avzr --delete'
+          SOURCE: './dist'
+          TARGET: '/usr/local/nginx/travel/vue/'
