@@ -27,21 +27,13 @@ const routes = [
   },
   { path: '/login', name: '登录', component: Login },
   { path: '/about', name: '关于', component: About },
-  {
-    path: '/blog',
-    name: '动态',
-    component: Blog,
-  },
+  { path: '/blog', name: '动态', component: Blog },
+  { path: '/tag/:name', name: '标签', component: TagArticles },
   {
     path: '/blog/:id',
     name: '详情',
     component: BlogContent,
     meta: { title: '博客' },
-  },
-  {
-    path: '/tag/:name',
-    name: '标签',
-    component: TagArticles,
   },
   {
     path: '/history',
