@@ -41,5 +41,6 @@ jobs:
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           # password: ${{ secrets.REMOTE_PASSWORD }}
           REMOTE_PORT: 22
-          SOURCE: './dist'
+          ARGS: '-avz --delete'
+          SOURCE: 'dist'
           TARGET: ${{ secrets.REMOTE_TARGET }}
