@@ -35,7 +35,6 @@ jobs:
 
       - name: copy dist file with scp
         uses: easingthemes/ssh-deploy@v2.1.5
-        run: ls
         with:
           # REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_HOST: '39.103.214.145'
@@ -43,5 +42,5 @@ jobs:
           REMOTE_USER: 'root'
           REMOTE_PORT: 22
           # ARGS: '-avzr --delete'
-          SOURCE: './dist'
-          TARGET: '/usr/local/nginx/travel/vue/'
+          SOURCE: './dist/*'
+          TARGET: '/usr/local/nginx/travel/vue'
