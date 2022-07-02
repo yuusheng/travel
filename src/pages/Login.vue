@@ -48,7 +48,7 @@
         :label="login ? '用户名/邮箱' : '请输入邮箱'"
         :error="errorCode"
         :errorList="[101, 120, 121]"
-        :changeFn="emailTest" />
+        :changeFn="!login ? emailTest : null" />
       <div v-if="!login" class="flex">
         <BaseInput
           v-model="verifyCode"

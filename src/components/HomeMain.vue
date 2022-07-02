@@ -29,9 +29,7 @@
       </div>
     </div>
     <!-- 右边图片 -->
-    <div class="img-container">
-      <img src="@/assets/img/homepage.jpeg" alt="" />
-    </div>
+    <div class="img-container"></div>
   </div>
 </template>
 
@@ -57,6 +55,7 @@ const handleSearch = () => {
 
 <style scoped>
 .img-container {
-  @apply relative hidden h-auto w-[calc(100%-27.5rem)] overflow-hidden md:block md:bg-center;
+  @apply relative hidden h-auto w-[calc(100%-27.5rem)] overflow-hidden  md:block md:bg-center;
+  background: url('@/assets/img/homepage.jpeg') no-repeat center/97%;
 }
 </style>

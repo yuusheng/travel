@@ -1,7 +1,7 @@
 import { get } from './http'
 import dayjs from 'dayjs'
 import { useRouter } from 'vue-router'
-import { sex } from '../assets/config/keys'
+import { sex } from '@/assets/config/keys'
 import { getStorage } from './user'
 
 export const getProfile = async () => {

@@ -25,7 +25,6 @@
             v-if="store.state.status"
             class="md:group-hover:h-20 md:group-hover:w-20 md:group-hover:translate-y-6 md:group-hover:-translate-x-2"
             :imgUrl="'http://' + store.state.user.avatar" />
-
           <a
             href="/login"
             class="rounded bg-theme px-3 py-2 font-bold text-white shadow"

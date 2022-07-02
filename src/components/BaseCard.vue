@@ -9,15 +9,18 @@
     </div>
     <div>
       <h2 class="text-xl font-semibold text-gray-800 md:text-2xl">
-        <slot name="title"></slot>
+        <!-- <slot name="title"></slot> -->
+        {{ article.title }}
       </h2>
       <p class="mt-2 h-16 truncate text-gray-600">
-        <slot name="desc"></slot>
+        <!-- <slot name="desc"></slot> -->
+        {{ article.desc }}
       </p>
     </div>
     <div class="mt-4 flex justify-end">
       <a href="#" class="text-xl font-medium text-indigo-500">
-        <slot name="user-name"></slot>
+        <!-- <slot name="user-name"></slot> -->
+        {{ article.author.name }}
       </a>
     </div>
   </div>
@@ -34,6 +37,7 @@ const props = defineProps({
       'https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80',
   },
   url: String,
+  article: Object,
 })
 
 const router = useRouter()

@@ -7,7 +7,8 @@
         :url="`/blog/${article._id}`"
         :imgSrc="'http:' + article.author.avatar"
         :key="article._id"
-        v-for="article in articleList">
+        v-for="article in articleList"
+        :article="article">
         南京一日游
         <template #title>
           {{ article.title }}

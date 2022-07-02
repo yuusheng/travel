@@ -10,7 +10,6 @@ export const signIn = async (name = '', email = '', password) => {
   }
 
   let res = await post('/api/users/login', data)
-  console.log(res)
   if (res.success) {
     // 设置localStorage
     setStorage(res.token)

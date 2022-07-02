@@ -27,7 +27,7 @@ const props = defineProps({
   modelValue: String,
   error: { type: Number },
   errorList: { type: Array, default: [] },
-  changeFn: Function,
+  changeFn: Function || null,
 })
 
 const showError = computed(() => props.errorList.includes(props.error))
@@ -40,7 +40,7 @@ const handleInput = (e) => {
 }
 // 输入框
 const handleChange = () => {
-  props.changeFn()
+  if (props.changeFn) props.changeFn()
 }
 </script>
 
