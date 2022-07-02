@@ -31,6 +31,8 @@ jobs:
         run: yarn
 
       - name: Build app
+        env:
+          BASE_PATH: http://lvshu.yuusheng.cn/
         run: yarn build
 
       - name: copy dist file with scp

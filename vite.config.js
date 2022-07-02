@@ -15,6 +15,8 @@ const config = defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd())
 
   return {
+    base: process.env.BASE_PATH ?? '/',
+
     plugins: [
       vue(),
       AutoImport({
