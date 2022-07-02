@@ -16,10 +16,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: check
+      - name: Check
         uses: actions/checkout@v3
 
-      - name: install nodejs
+      - name: Install nodejs
         uses: actions/setup-node@v3.1.1
         with:
           node-version: '14.x'
@@ -27,10 +27,10 @@ jobs:
       - name: Yarn CLI
         uses: CultureHQ/actions-yarn@v1.0.1
 
-      - name: install deps
+      - name: Install deps
         run: yarn
 
-      - name: build app
+      - name: Build app
         run: yarn build
 
       - name: copy dist file with scp
