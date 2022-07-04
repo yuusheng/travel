@@ -1,10 +1,11 @@
 import { get, post } from './http'
 
+type ArticleList = {}
 /**
  * 发布文章
  * @param {Object} data 文章内容
  */
-export async function uploadArticle(data) {
+export async function uploadArticle(data: string) {
   let res = await post('/api/article', data)
   // todo handle error
   alert(res)
@@ -15,7 +16,7 @@ export async function uploadArticle(data) {
  * @param {String} id 作者id
  * @return {Array} 博客列表
  */
-export async function getArticleListByAuthorId(user) {
+export async function getArticleListByAuthorId(user: string) {
   let articleList = await getArticleList(`/api/article/user/${user}`)
   return articleList
 }
@@ -25,9 +26,15 @@ export async function getArticleListByAuthorId(user) {
  * @param {String} tag 标签名字
  * @returns 文章列表
  */
-export async function getArticleListByTag(tag) {
+export async function getArticleListByTag(tag: string) {
   let articleList = await getArticleList(`/api/article/tag/${tag}`)
   return articleList
+}
+
+type ArticleListResponse = {
+  success: boolean
+  articleList: any[]
+  msg?: string
 }
 
 /**
@@ -35,8 +42,8 @@ export async function getArticleListByTag(tag) {
  * @param {String} api 请求api
  * @returns {Array} 文章列表或空数组
  */
-async function getArticleList(api) {
-  let res = await get(api)
+async function getArticleList(api: string) {
+  let res: ArticleListResponse = await get(api)
   if (res?.success) {
     const { articleList } = res
     return articleList
