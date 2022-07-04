@@ -1,6 +1,7 @@
 <template>
   <a
     :href="`/blog/${id}`"
+    target="_blank"
     class="mx-3 my-5 flex h-24 w-8/12 justify-around space-x-4 rounded px-7 py-2 shadow-sm">
     <!-- 封面 -->
     <div class="h-auto w-auto">
@@ -19,6 +20,7 @@
 <script setup>
 import { watch, ref } from '@vue/runtime-core'
 import dayjs from 'dayjs'
+
 const props = defineProps({
   id: String,
   title: String,

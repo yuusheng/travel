@@ -10,16 +10,18 @@ import { onBeforeMount } from 'vue'
 const store = useStore()
 
 onBeforeMount(async () => {
-  // 获取token
-  let token = getStorage()
-  if (token) {
-    // 获取当前用户
-    let user = await currentUser(token)
-    // 修改vuex
-    store.commit('login', user)
-    console.log('commit success')
-  } else {
-    store.commit('logout')
+  if (!store.state.status) {
+    // 获取token
+    let token = getStorage()
+    if (token) {
+      // 获取当前用户
+      let user = await currentUser(token)
+      // 修改vuex
+      store.commit('login', user)
+      console.log('commit success')
+    } else {
+      store.commit('logout')
+    }
   }
 })
 </script>
