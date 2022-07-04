@@ -1,54 +1,76 @@
 import { post, get } from './http'
 import { useStore } from 'vuex'
 
+export type SignInState = {
+  success: boolean
+  token?: string
+  code?: number
+}
+
 // 登录
-export const signIn = async (name = '', email = '', password) => {
+export const signIn = async (
+  name = '',
+  email = '',
+  password: string
+): Promise<SignInState> => {
   let data = {
     name,
     email,
     password,
   }
 
-  let res = await post('/api/users/login', data)
+  let res: SignInState = await post('/api/users/login', data)
   if (res.success) {
     // 设置localStorage
-    setStorage(res.token)
+    setStorage(res.token as string)
     // 返回token
   }
   return res
 }
 
+type VerifyCodeResponse = {
+  success: boolean
+  msg: string
+}
 // 注册
-export const getVerifyCode = async (email) => {
+export const getVerifyCode = async (
+  email: string
+): Promise<VerifyCodeResponse | undefined> => {
   const data = { email }
   try {
-    let res = await post('/api/users/auth-code', data)
-    if (res.data.success) {
+    let res: VerifyCodeResponse = await post('/api/users/auth-code', data)
+    if (res.success) {
       return res
     } else {
       alert(res.msg)
       return res
     }
-  } catch (e) {
+  } catch (e: any) {
     alert(e.message)
-    return {}
   }
 }
 
-export const signUp = async (email, verifyCode, password) => {
+type SignUpResponse = {
+  success: boolean
+  code: number
+}
+export const signUp = async (
+  email: string,
+  verifyCode: string,
+  password: string
+): Promise<SignUpResponse | undefined> => {
   let data = { email, name: 'kevin', code: verifyCode, password }
 
-  let res = await post('/api/users/register', data)
+  let res: SignUpResponse = await post('/api/users/register', data)
   // if (res.data.success) {
   //   console.log(res)
   // }
   return res
   // todo 注册之后如果成功要进行登录
-  console.log(res.data)
 }
 
 // 当前用户状态
-export const currentUser = async (token) => {
+export const currentUser = async (token: string) => {
   let res = await get('/api/users/current', {
     headers: { Authorization: token },
   })
@@ -56,7 +78,7 @@ export const currentUser = async (token) => {
 }
 
 // 设置localStorage
-export const setStorage = (token) => {
+export const setStorage = (token: string) => {
   localStorage.setItem('Authorization', token)
   console.log('设置localStorage成功')
 }

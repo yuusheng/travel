@@ -2,7 +2,7 @@
   <router-view></router-view>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useStore } from 'vuex'
 import { currentUser, getStorage } from './http/user'
 import { onBeforeMount } from 'vue'

@@ -27,7 +27,7 @@ const props = defineProps({
   modelValue: String,
   error: { type: Number },
   errorList: { type: Array, default: [] },
-  changeFn: Function || null,
+  changeFn: Function || undefined,
 })
 
 const showError = computed(() => props.errorList.includes(props.error))

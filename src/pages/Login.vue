@@ -48,7 +48,7 @@
         :label="login ? '用户名/邮箱' : '请输入邮箱'"
         :error="errorCode"
         :errorList="[101, 120, 121]"
-        :changeFn="!login ? emailTest : null" />
+        :changeFn="!login ? emailTest : undefined" />
       <div v-if="!login" class="flex">
         <BaseInput
           v-model="verifyCode"
@@ -93,13 +93,13 @@
   </div>
 </template>
 
-<script setup>
-import { computed, ref } from 'vue'
+<script setup lang="ts">
+import { Ref, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { currentUser, getVerifyCode, signIn, signUp } from '../http/user'
 import { useStore } from 'vuex'
-import BaseInput from '../components/BaseInput.vue'
-import BaseButton from '../components/BaseButton.vue'
+import BaseInput from '@/components/BaseInput.vue'
+import BaseButton from '@/components/BaseButton.vue'
 const name = ref('')
 const pwd = ref('')
 const verifyCode = ref('')
@@ -107,7 +107,7 @@ const verifyPwd = ref('')
 const router = useRouter()
 const login = ref(true)
 const store = useStore()
-const errorCode = ref(100)
+const errorCode: Ref<number | undefined> = ref(100)
 const verifyCodeDisable = ref(true)
 
 console.log(verifyCodeDisable.value)
@@ -150,10 +150,11 @@ const handleLogin = async () => {
     ? await signIn('', name.value, pwd.value)
     : await signIn(name.value, '', pwd.value)
 
+  console.log(res)
   if (res.success) {
     store.state.user['token'] = res.token
     // 获取当前用户信息
-    let user = await currentUser(res.token)
+    let user = await currentUser(res.token as string)
     // 修改state中的user
     store.commit('login', user)
     // 重定向到homepage
@@ -171,7 +172,7 @@ const handleGetVerifyCode = async () => {
     return
   }
   let res = await getVerifyCode(name.value)
-  if (res.success) {
+  if (res?.success) {
     console.log(res.msg)
   }
 }
@@ -188,9 +189,9 @@ const handleRegister = async () => {
     return
   }
   let res = await signUp(name.value, verifyCode.value, pwd.value)
-  if (res.success) {
+  if (res?.success) {
     // todo 成功
-  } else errorCode.value = res.code
+  } else errorCode.value = res?.code
 }
 
 // 改变登录、注册
