@@ -4,7 +4,8 @@
 
 <script setup lang="ts">
 import { useStore } from 'vuex'
-import { currentUser, getStorage } from './http/user'
+import { currentUser } from '@/http'
+import { getStorage, setStorage } from '@/utils'
 import { onBeforeMount } from 'vue'
 
 const store = useStore()
