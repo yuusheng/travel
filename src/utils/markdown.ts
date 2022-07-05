@@ -2,9 +2,9 @@
 import { marked } from 'marked'
 
 const tocObj: {
-  add: (text: string, level: string) => string
+  add: (text: string, level: number) => string
   toHTML: () => string
-  toc: Array<{ anchor: string; level: string; text: string }>
+  toc: Array<{ anchor: string; level: number; text: string }>
   index: number
 } = {
   add(text, level) {
@@ -16,7 +16,7 @@ const tocObj: {
   },
 
   toHTML() {
-    let levelStack: any[] = []
+    let levelStack: number[] = []
     let result = ''
     const addStartUL = () => {
       result += '</ul>\n'
@@ -68,7 +68,7 @@ class MarkUtils {
 
     // 自定Markdown解析
     this.#rendererMD.heading = (text, level, raw) => {
-      let anchor = tocObj.add(text, level.toString())
+      let anchor = tocObj.add(text, level)
       return `<h${level} class="mb-3 ${
         level >= 2 ? 'font-bold scroll-mt-1' : ''
       }" id=${anchor}>${text}</h${level}>\n`
@@ -123,5 +123,4 @@ class MarkUtils {
   }
 }
 
-const markdown = new MarkUtils()
-export { markdown }
+export const markdown = new MarkUtils()
