@@ -13,10 +13,18 @@
     <section class="flex">
       <ul
         class="relative hidden items-center divide-x divide-slate-300 md:flex">
-        <li class="nav-item"><a href="/">主页</a></li>
-        <li class="nav-item"><a href="/blog">博客</a></li>
-        <li class="nav-item"><a href="/history">历史</a></li>
-        <li class="nav-item"><a href="/about">关于</a></li>
+        <li class="nav-item">
+          <button @click="router.push('/')">主页</button>
+        </li>
+        <li class="nav-item">
+          <button @click="router.push('/blog')">博客</button>
+        </li>
+        <li class="nav-item">
+          <button @click="router.push('/history')">历史</button>
+        </li>
+        <li class="nav-item">
+          <button @click="router.push('/about')">关于</button>
+        </li>
       </ul>
       <ul>
         <li class="group w-12 cursor-pointer">

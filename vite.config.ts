@@ -3,11 +3,11 @@ import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-import postcssImport from 'postcss-import'
-import autoprefixer from 'autoprefixer'
-import tailwindcss from 'tailwindcss'
+// import postcssImport from 'postcss-import'
+// import autoprefixer from 'autoprefixer'
+// import tailwindcss from 'tailwindcss'
 import viteCompression from 'vite-plugin-compression'
-import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
+// import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import { resolve } from 'upath'
 
 // https://vitejs.dev/config/
@@ -26,15 +26,12 @@ const config = defineConfig(({ mode }) => {
         resolvers: [ElementPlusResolver()],
       }),
       viteCompression(),
-      Components({
-        resolvers: [AntDesignVueResolver()],
-      }),
     ],
-    css: {
-      postcss: {
-        plugins: [postcssImport, autoprefixer, tailwindcss],
-      },
-    },
+    // css: {
+    //   postcss: {
+    //     plugins: [postcssImport, autoprefixer, tailwindcss],
+    //   },
+    // },
     resolve: {
       alias: {
         '@': resolve(__dirname, '/src'),

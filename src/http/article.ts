@@ -1,3 +1,4 @@
+import { Ref } from 'vue'
 import { get, post } from './http'
 
 type ArticleList = {}
@@ -31,17 +32,48 @@ export async function getArticleListByTag(tag: string) {
   return articleList
 }
 
+export type ArticleContent = {
+  author: string
+  content: {
+    content: string
+    toc: string
+  }
+  create_time: string
+  desc: string
+  keywords: string[]
+  like_users: string[]
+  meta: {
+    comments: number
+    likes: number
+    views: number
+  }
+  numbers: string
+  state: number
+  tags: string[]
+  title: string
+  update_time: string
+  _id: string
+}
+
+// type MarkedType = keyof ArticleContent
+
+/**
+ * 根据id获取文章内容
+ * @param {Ref<string>} id
+ * @returns {ArticleContent} 文章内容
+ */
+export async function getArticleContentById(id: Ref<string>) {
+  let data: ArticleContent = await get(`/api/article/detail/${id.value}`)
+  return data
+}
+
 type ArticleListResponse = {
   success: boolean
   articleList: any[]
   msg?: string
 }
 
-/**
- * base get article api
- * @param {String} api 请求api
- * @returns {Array} 文章列表或空数组
- */
+//  base get article api
 async function getArticleList(api: string) {
   let res: ArticleListResponse = await get(api)
   if (res?.success) {

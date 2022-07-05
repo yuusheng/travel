@@ -1,7 +1,12 @@
 // 参考：https://www.cherylgood.cn/detail/5bdaf4722382b4646c27143b.html
 import { marked } from 'marked'
 
-const tocObj = {
+const tocObj: {
+  add: (text: string, level: string) => string
+  toHTML: () => string
+  toc: Array<{ anchor: string; level: string; text: string }>
+  index: number
+} = {
   add(text, level) {
     // let anchor = `#toc${level}${++this.index}`
     ++this.index
@@ -11,7 +16,7 @@ const tocObj = {
   },
 
   toHTML() {
-    let levelStack = []
+    let levelStack: any[] = []
     let result = ''
     const addStartUL = () => {
       result += '</ul>\n'
@@ -19,7 +24,7 @@ const tocObj = {
     const addEndUL = () => {
       result += '</ul>\n'
     }
-    const addLI = (anchor, text) => {
+    const addLI = (anchor: string, text: string) => {
       result += `<li class="hover:text-gray-700 list-none"><a href="${anchor}">${text}<a></li>\n`
     }
     this.toc.forEach((item) => {
@@ -50,6 +55,11 @@ const tocObj = {
   index: 0,
 }
 
+type MarkedData = {
+  content: string
+  toc: string
+}
+
 class MarkUtils {
   #rendererMD
 
@@ -58,7 +68,7 @@ class MarkUtils {
 
     // 自定Markdown解析
     this.#rendererMD.heading = (text, level, raw) => {
-      let anchor = tocObj.add(text, level)
+      let anchor = tocObj.add(text, level.toString())
       return `<h${level} class="mb-3 ${
         level >= 2 ? 'font-bold scroll-mt-1' : ''
       }" id=${anchor}>${text}</h${level}>\n`
@@ -101,15 +111,17 @@ class MarkUtils {
     })
   }
 
-  marked(data) {
+  marked(data: any): MarkedData {
+    let content = ''
+    let toc = ''
+
     if (data) {
-      let content = marked(data)
-      let toc = tocObj.toHTML()
-      return { content, toc }
-    } else {
-      return null
+      content = marked(data)
+      toc = tocObj.toHTML()
     }
+    return { content, toc }
   }
 }
+
 const markdown = new MarkUtils()
-export default markdown
+export { markdown }

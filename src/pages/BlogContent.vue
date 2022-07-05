@@ -12,37 +12,37 @@
           src="@/assets/img/Lvshu.png"
           alt="author" />
         <h1 class="hidden md:mx-auto md:block md:text-4xl md:font-bold">
-          {{ data.title }}
+          {{ data?.title }}
         </h1>
         <div
           class="text-xl font-bold md:mx-auto md:block md:font-light md:text-gray-500">
-          {{ data.author }}
+          {{ data?.author }}
         </div>
       </div>
       <!-- 目录 -->
-      <div v-if="data.content" class="hidden md:ml-8 md:block">
+      <div v-if="data?.content" class="hidden md:ml-8 md:block">
         <span class="mt-10 text-gray-700">文章目录</span>
         <div
           class="ml-6 mt-7 text-[0.8rem] text-gray-400"
-          v-html="data.content.toc"></div>
+          v-html="data?.content.toc"></div>
       </div>
     </aside>
 
     <article
       class="space-y-6 px-10 md:ml-[25%] md:mb-28 md:w-9/12 md:px-20 md:py-3">
       <header class="mb-6">
-        <h2 class="my-1 font-bold md:my-5 md:text-3xl">{{ data.desc }}</h2>
-        <div class="text-gray-500">{{ data.create_time }}</div>
+        <h2 class="my-1 font-bold md:my-5 md:text-3xl">{{ data?.desc }}</h2>
+        <div class="text-gray-500">{{ data?.create_time }}</div>
       </header>
       <div>
         <!--* 解析Markdown -->
-        <div v-if="data.content" v-html="data.content.content"></div>
+        <div v-if="data?.content" v-html="data.content.content"></div>
         <div class="text-gray-500" v-if="updateShow">
-          {{ data.update_time }}
+          {{ data?.update_time }}
         </div>
       </div>
       <div>
-        <div class="inline-flex" v-for="item in data.tags" :key="item">
+        <div class="inline-flex" v-for="item in data?.tags" :key="item">
           <blog-tag>{{ item }}</blog-tag>
         </div>
       </div>
@@ -50,21 +50,20 @@
   </main>
 </template>
 
-<script setup>
-import axios from 'axios'
+<script setup lang="ts">
 import dayjs from 'dayjs'
-import { computed, ref } from 'vue'
+import { computed, onMounted, Ref, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import BlogTag from '../components/BlogTag.vue'
-import markdown from '../utils/markdown'
-
+import BlogTag from '@/components/BlogTag.vue'
+import { markdown } from '@/utils'
+import { getArticleContentById, ArticleContent } from '../http'
 const route = useRoute()
-const blogId = ref(route.params.id)
-const data = ref({})
+const blogId = ref(route.params.id as string)
+const data: Ref<ArticleContent | undefined> = ref()
 const loading = ref(true)
 
-axios.get(`/api/article/detail/${blogId.value}`).then((res) => {
-  data.value = res.data
+onMounted(async () => {
+  data.value = await getArticleContentById(blogId)
   // 处理markdown
   data.value.content = markdown.marked(data.value.content)
   // 修改日期格式
@@ -81,8 +80,10 @@ axios.get(`/api/article/detail/${blogId.value}`).then((res) => {
 
 // update_time是否显示
 const updateShow = computed(
-  () => data.value.create_time !== data.value.update_time
+  () => data.value?.create_time !== data.value?.update_time
 )
+
+function toAuthorPage() {}
 </script>
 
 <style lang="scss" scoped></style>

@@ -1,8 +1,8 @@
 import { get } from './http'
 import dayjs from 'dayjs'
 import { useRouter } from 'vue-router'
-import { sex } from '../utils'
-import { getStorage } from './user'
+import { sex } from '@/utils'
+import { getStorage } from '@/utils'
 
 export type User = {
   _id: string

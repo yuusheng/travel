@@ -1,6 +1,6 @@
 import { post, get } from './http'
 import { useStore } from 'vuex'
-
+import { getStorage, setStorage } from '@/utils'
 export type SignInState = {
   success: boolean
   token?: string
@@ -75,19 +75,6 @@ export const currentUser = async (token: string) => {
     headers: { Authorization: token },
   })
   return res
-}
-
-// 设置localStorage
-export const setStorage = (token: string) => {
-  localStorage.setItem('Authorization', token)
-  console.log('设置localStorage成功')
-}
-
-// 获取localStorage
-export const getStorage = () => {
-  return localStorage.getItem('Authorization')
-    ? localStorage.getItem('Authorization')
-    : null
 }
 
 // 登出
