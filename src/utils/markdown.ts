@@ -19,7 +19,7 @@ const tocObj: {
     let levelStack: number[] = []
     let result = ''
     const addStartUL = () => {
-      result += '</ul>\n'
+      result += '<ul>\n'
     }
     const addEndUL = () => {
       result += '</ul>\n'
