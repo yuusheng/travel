@@ -1,10 +1,13 @@
 // 参考：https://www.cherylgood.cn/detail/5bdaf4722382b4646c27143b.html
 import { marked } from 'marked'
+import type { Content } from '@/http'
+
+type Level = number
 
 const tocObj: {
-  add: (text: string, level: number) => string
+  add: (text: string, level: Level) => string
   toHTML: () => string
-  toc: Array<{ anchor: string; level: number; text: string }>
+  toc: Array<{ anchor: string; level: Level; text: string }>
   index: number
 } = {
   add(text, level) {
@@ -55,11 +58,6 @@ const tocObj: {
   index: 0,
 }
 
-type MarkedData = {
-  content: string
-  toc: string
-}
-
 class MarkUtils {
   #rendererMD
 
@@ -69,9 +67,8 @@ class MarkUtils {
     // 自定Markdown解析
     this.#rendererMD.heading = (text, level, raw) => {
       let anchor = tocObj.add(text, level)
-      return `<h${level} class="mb-3 ${
-        level >= 2 ? 'font-bold scroll-mt-1' : ''
-      }" id=${anchor}>${text}</h${level}>\n`
+      return `<h${level} class="mb-3 ${level >= 2 ? 'font-bold scroll-mt-1' : ''
+        }" id=${anchor}>${text}</h${level}>\n`
     }
     this.#rendererMD.table = (header, body) => {
       return `<div class="relative my-3 overflow-x-auto shadow-md shadow-gray-100 sm:rounded-lg">
@@ -111,7 +108,7 @@ class MarkUtils {
     })
   }
 
-  marked(data: any): MarkedData {
+  marked(data: any): Content {
     let content = ''
     let toc = ''
 

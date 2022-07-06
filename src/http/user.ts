@@ -1,6 +1,7 @@
 import { post, get } from './http'
 import { useStore } from 'vuex'
 import { getStorage, setStorage } from '@/utils'
+
 export type SignInState = {
   success: boolean
   token?: string

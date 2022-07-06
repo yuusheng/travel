@@ -32,14 +32,16 @@ export async function getArticleListByTag(tag: string) {
   return articleList
 }
 
+export type Content = {
+  content: string
+  toc: string
+}
+
 export type ArticleContent = {
   author: string
-  content: {
-    content: string
-    toc: string
-  }
   create_time: string
   desc: string
+  content: Content
   keywords: string[]
   like_users: string[]
   meta: {
