@@ -11,7 +11,7 @@
 import { ref, onBeforeMount } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
-import { getProfile } from '../http/profile'
+import { getProfile } from '@/http'
 
 const user = ref({})
 const store = useStore()

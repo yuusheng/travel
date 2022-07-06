@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import BaseArticleListVue from '../components/BaseArticleList.vue'
+import BaseArticleListVue from '@/components/BaseArticleList.vue'
 </script>
 
 <style lang="scss" scoped></style>
