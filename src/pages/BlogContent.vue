@@ -26,6 +26,8 @@
           class="ml-6 mt-7 text-[0.8rem] text-gray-400"
           v-html="data?.content.toc"></div>
       </div>
+
+      <base-comment></base-comment>
     </aside>
 
     <article
@@ -56,7 +58,9 @@ import { computed, onMounted, Ref, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import BlogTag from '@/components/BlogTag.vue'
 import { markdown } from '@/utils'
-import { getArticleContentById, ArticleContent } from '../http'
+import { getArticleContentById, ArticleContent } from '@/http'
+import BaseComment from '@/components/BaseComment.vue'
+
 const route = useRoute()
 const blogId = ref(route.params.id as string)
 const data: Ref<ArticleContent | undefined> = ref()

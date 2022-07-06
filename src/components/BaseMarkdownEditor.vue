@@ -9,7 +9,7 @@
 
 <script setup>
 import { ref, watch } from 'vue'
-import { uploadArticle } from '../http/article'
+import { uploadArticle } from '@/http'
 import { mavonEditor } from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 import { useStore } from 'vuex'

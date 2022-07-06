@@ -14,10 +14,10 @@ const config = defineConfig(({ mode }) => {
     base: process.env.BASE_PATH ?? '/',
 
     plugins: [
-      vue({reactivityTransform: true}),
-      AutoImport({
-        resolvers: [ElementPlusResolver()],
-      }),
+      vue({ reactivityTransform: true }),
+      // AutoImport({
+      //   resolvers: [ElementPlusResolver()],
+      // }),
       Components({
         resolvers: [ElementPlusResolver()],
       }),

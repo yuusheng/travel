@@ -1,17 +1,19 @@
 <template>
-  <!-- <building>History</building> -->
-  <BaseArticleList
-    v-for="article in articles"
-    :key="article._id"
-    :id="article._id"
-    :title="article.title"
-    :desc="article.desc"
-    :time="article.create_time" />
+  <div class="flex h-screen flex-col">
+    <div class="h-1/3 flex-1">?</div>
+    <div class="w-full flex-1">
+      <BaseArticleList
+        v-for="article in articles"
+        :key="article._id"
+        :id="article._id"
+        :title="article.title"
+        :desc="article.desc"
+        :time="article.create_time" />
+    </div>
+  </div>
 </template>
 
 <script setup>
-import Building from './Building.vue'
-import BaseArticleList from '../components/BaseArticleList.vue'
 import { onMounted, ref } from 'vue'
 import { getArticleListByAuthorId } from '../http/article'
 const articles = ref([])

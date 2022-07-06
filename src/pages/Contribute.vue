@@ -1,11 +1,9 @@
 <template>
   <div class="p-10">
-    <BaseArticleListVue />
+    <BaseArticleList />
   </div>
 </template>
 
-<script setup>
-import BaseArticleListVue from '@/components/BaseArticleList.vue'
-</script>
+<script setup></script>
 
 <style lang="scss" scoped></style>

@@ -28,6 +28,7 @@
       </ul>
       <ul>
         <li class="group w-12 cursor-pointer">
+          <!-- todo imgUrl change -->
           <BaseAvatar
             @click="handleClick"
             v-if="store.state.status"
