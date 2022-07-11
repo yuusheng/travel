@@ -37,7 +37,7 @@ export type Content = {
   toc: string
 }
 
-export type ArticleContent = {
+export interface ArticleContent {
   author: string
   create_time: string
   desc: string
