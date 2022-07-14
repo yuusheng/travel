@@ -5,6 +5,9 @@ import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import viteCompression from 'vite-plugin-compression'
 import { resolve } from 'upath'
+import Unocss from 'unocss/vite'
+import presetWind from '@unocss/preset-wind'
+import presetAttributify from '@unocss/preset-attributify'
 
 // https://vitejs.dev/config/
 const config = defineConfig(({ mode }) => {
@@ -22,6 +25,9 @@ const config = defineConfig(({ mode }) => {
         resolvers: [ElementPlusResolver()],
       }),
       viteCompression(),
+      // Unocss({
+      //   presets: [presetWind(), presetAttributify()],
+      // }),
     ],
     resolve: {
       alias: {
