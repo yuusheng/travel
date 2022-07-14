@@ -17,8 +17,8 @@
   </a>
 </template>
 
-<script setup>
-import { watch, ref } from '@vue/runtime-core'
+<script setup lang="ts">
+import { ref } from 'vue'
 import dayjs from 'dayjs'
 
 const props = defineProps({
