@@ -31,17 +31,17 @@
           <!-- todo imgUrl change -->
           <BaseAvatar
             @click="handleClick"
-            v-if="store.state.status"
+            v-if="store.status"
             class="md:group-hover:h-20 md:group-hover:w-20 md:group-hover:translate-y-6 md:group-hover:-translate-x-2"
-            :imgUrl="'http://' + store.state.user.avatar" />
+            :imgUrl="'http://' + store.user.avatar" />
           <a
             href="/login"
             class="rounded bg-theme px-3 py-2 font-bold text-white shadow"
             v-else>
             <button>登 录</button>
           </a>
-          <TheInfo v-if="store.state.status" class="hidden md:group-hover:flex">
-            {{ store.state.user.name }}
+          <TheInfo v-if="store.status" class="hidden md:group-hover:flex">
+            {{ store.user.name }}
           </TheInfo>
         </li>
       </ul>
@@ -49,16 +49,16 @@
   </header>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useRouter } from 'vue-router'
-import { useStore } from 'vuex'
+import { useUserStore } from '@/store'
 import BaseAvatar from './BaseAvatar.vue'
 import TheInfo from './TheInfo.vue'
-const store = useStore()
+const store = useUserStore()
 const router = useRouter()
 
 const handleClick = () => {
-  if (store.state.status) {
+  if (store.status) {
     router.push('/user')
   } else {
     router.push('/login')

@@ -7,12 +7,12 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, watch } from 'vue'
 import { uploadArticle } from '@/http'
-import { mavonEditor } from 'mavon-editor'
+import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
-import { useStore } from 'vuex'
+import { useUserStore } from '@/store'
 
 const articleContent = ref('')
 const title = ref('')
@@ -36,12 +36,12 @@ watch(
 // }
 
 // 发布文章
-const store = useStore()
+const store = useUserStore()
 const handleSubmit = async () => {
   // todo 数据校验
   const data = {
     title: title.value,
-    author: store.state.user.name,
+    author: store.user.name,
     content: articleContent.value,
   }
   console.log(articleContent.value)

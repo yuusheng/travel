@@ -27,15 +27,16 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { useStore } from 'vuex'
+import { useUserStore } from '@/store'
 import { getArticleListByAuthorId } from '../http/article'
 
 import BaseCard from './BaseCard.vue'
 
-const store = useStore()
-const articleList = ref([])
+const store = useUserStore()
+// todo add articleList type
+const articleList = ref<any[]>([])
 onMounted(async () => {
   articleList.value = await getArticleListByAuthorId('6231ce1348a3ea31bb4e5246')
 })

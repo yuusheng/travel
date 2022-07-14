@@ -97,7 +97,7 @@
 import { Ref, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { currentUser, getVerifyCode, signIn, signUp } from '../http/user'
-import { useStore } from 'vuex'
+import { useUserStore } from '@/store'
 import BaseInput from '@/components/BaseInput.vue'
 import BaseButton from '@/components/BaseButton.vue'
 const name = ref('')
@@ -106,19 +106,19 @@ const verifyCode = ref('')
 const verifyPwd = ref('')
 const router = useRouter()
 const login = ref(true)
-const store = useStore()
+const store = useUserStore()
 const errorCode: Ref<number | undefined> = ref(100)
 const verifyCodeDisable = ref(true)
 
 console.log(verifyCodeDisable.value)
 // 去除空格
-const handleBlank = (str) => {
+const handleBlank = (str: string) => {
   let reg = /\s*/g
   return str.replace(reg, '')
 }
 
 // 邮箱验证
-const isEmail = (str) => {
+const isEmail = (str: string) => {
   let reg = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
   return reg.test(str)
 }
@@ -152,11 +152,11 @@ const handleLogin = async () => {
 
   console.log(res)
   if (res.success) {
-    store.state.user['token'] = res.token
+    store.user['token'] = res.token
     // 获取当前用户信息
     let user = await currentUser(res.token as string)
     // 修改state中的user
-    store.commit('login', user)
+    store.login(user)
     // 重定向到homepage
     router.push('/')
   } else {

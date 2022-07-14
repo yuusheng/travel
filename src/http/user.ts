@@ -1,6 +1,7 @@
 import { post, get } from './http'
-import { useStore } from 'vuex'
+import { useUserStore } from '@/store'
 import { getStorage, setStorage } from '@/utils'
+import { User } from '@/types'
 
 export type SignInState = {
   success: boolean
@@ -72,7 +73,7 @@ export const signUp = async (
 
 // 当前用户状态
 export const currentUser = async (token: string) => {
-  let res = await get('/api/users/current', {
+  let res: User = await get('/api/users/current', {
     headers: { Authorization: token },
   })
   return res
@@ -81,7 +82,8 @@ export const currentUser = async (token: string) => {
 // 登出
 export const signOut = () => {
   localStorage.removeItem('Authorization')
-  const store = useStore()
+  const store = useUserStore()
+  store.logout()
   location.reload()
   console.log('退出成功')
 }

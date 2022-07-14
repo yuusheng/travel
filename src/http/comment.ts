@@ -1,7 +1,7 @@
-import { get, post, put } from "./http";
+import { get, post, put } from './http'
 
+type IfLike = { like: boolean; dislike: boolean }
 
-type IfLike = { like: boolean, dislike: boolean }
 export async function getIfLikeByAUId(articleId: string, userId: string) {
   let res: IfLike = await get(``)
   return res

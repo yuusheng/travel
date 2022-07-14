@@ -3,25 +3,26 @@
 </template>
 
 <script setup lang="ts">
-import { useStore } from 'vuex'
+import { useUserStore } from '@/store'
 import { currentUser } from '@/http'
 import { getStorage, setStorage } from '@/utils'
 import { onBeforeMount } from 'vue'
+import { User } from '@/types'
 
-const store = useStore()
+const userStore = useUserStore()
 
 onBeforeMount(async () => {
-  if (!store.state.status) {
+  if (!userStore.status) {
     // 获取token
     let token = getStorage()
     if (token) {
       // 获取当前用户
-      let user = await currentUser(token)
+      let user: User = await currentUser(token)
       // 修改vuex
-      store.commit('login', user)
+      userStore.login(user)
       console.log('commit success')
     } else {
-      store.commit('logout')
+      userStore.logout()
     }
   }
 })

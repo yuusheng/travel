@@ -1,12 +1,17 @@
 import { Ref } from 'vue'
 import { get, post } from './http'
 
-type ArticleList = {}
+type ArticleList = any
+type Article = {
+  title: string
+  author: string
+  content: string
+}
 /**
  * 发布文章
  * @param {Object} data 文章内容
  */
-export async function uploadArticle(data: string) {
+export async function uploadArticle(data: Article) {
   let res = await post('/api/article', data)
   // todo handle error
   alert(res)
@@ -18,7 +23,7 @@ export async function uploadArticle(data: string) {
  * @return {Array} 博客列表
  */
 export async function getArticleListByAuthorId(user: string) {
-  let articleList = await getArticleList(`/api/article/user/${user}`)
+  let articleList: Article[] = await getArticleList(`/api/article/user/${user}`)
   return articleList
 }
 
@@ -65,7 +70,7 @@ export interface ArticleContent {
  * @returns {ArticleContent} 文章内容
  */
 export async function getArticleContentById(id: Ref<string>) {
-  let data: ArticleContent = await get(`/api/article/detail/${id.value}`)
+  let data: ArticleContent = await get(`/api/article/${id.value}`)
   return data
 }
 
