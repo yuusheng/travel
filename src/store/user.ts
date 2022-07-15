@@ -24,10 +24,10 @@ export const useUserStore = defineStore('user', () => {
     status = false
   }
 
-  return {
+  return $$({
     user,
     status,
     login,
     logout,
-  }
+  })
 })

@@ -150,7 +150,6 @@ const handleLogin = async () => {
     ? await signIn('', name.value, pwd.value)
     : await signIn(name.value, '', pwd.value)
 
-  console.log(res)
   if (res.success) {
     store.user['token'] = res.token
     // 获取当前用户信息
