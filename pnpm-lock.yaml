@@ -1,4 +1,4 @@
-lockfileVersion: 5.3
+lockfileVersion: 5.4
 
 specifiers:
   '@types/lodash': ^4.14.182
@@ -28,7 +28,6 @@ specifiers:
   vitest: ^0.10.0
   vue: ^3.2.25
   vue-router: '4'
-  vuex: ^4.0.2
 
 dependencies:
   '@types/marked': registry.npmmirror.com/@types/marked/4.0.3
@@ -44,7 +43,6 @@ dependencies:
   upath: registry.npmmirror.com/upath/2.0.1
   vue: registry.npmmirror.com/vue/3.2.37
   vue-router: registry.npmmirror.com/vue-router/4.1.1_vue@3.2.37
-  vuex: registry.npmmirror.com/vuex/4.0.2_vue@3.2.37
 
 devDependencies:
   '@types/lodash': registry.npmmirror.com/@types/lodash/4.14.182
@@ -56,7 +54,7 @@ devDependencies:
   prettier: registry.npmmirror.com/prettier/2.7.1
   prettier-plugin-tailwindcss: registry.npmmirror.com/prettier-plugin-tailwindcss/0.1.12_prettier@2.7.1
   unocss: registry.npmmirror.com/unocss/0.44.2_vite@2.9.14
-  unplugin-auto-import: registry.npmmirror.com/unplugin-auto-import/0.6.9_@vueuse+core@8.9.1+vite@2.9.14
+  unplugin-auto-import: registry.npmmirror.com/unplugin-auto-import/0.6.9_jg57o3hw2g6ynl3mkvtaux3hqe
   unplugin-vue-components: registry.npmmirror.com/unplugin-vue-components/0.21.1_vite@2.9.14+vue@3.2.37
   vite: registry.npmmirror.com/vite/2.9.14
   vite-plugin-compression: registry.npmmirror.com/vite-plugin-compression/0.5.1_vite@2.9.14
@@ -1002,7 +1000,7 @@ packages:
       escape-html: registry.npmmirror.com/escape-html/1.0.3
       lodash: registry.npmmirror.com/lodash/4.17.21
       lodash-es: registry.npmmirror.com/lodash-es/4.17.21
-      lodash-unified: registry.npmmirror.com/lodash-unified/1.0.2_da03a4540fbd16bbaafbb96724306afd
+      lodash-unified: registry.npmmirror.com/lodash-unified/1.0.2_3ib2ivapxullxkx3xftsimdk7u
       memoize-one: registry.npmmirror.com/memoize-one/6.0.0
       normalize-wheel-es: registry.npmmirror.com/normalize-wheel-es/1.1.2
       vue: registry.npmmirror.com/vue/3.2.37
@@ -1556,7 +1554,7 @@ packages:
     version: 4.17.21
     dev: false
 
-  registry.npmmirror.com/lodash-unified/1.0.2_da03a4540fbd16bbaafbb96724306afd:
+  registry.npmmirror.com/lodash-unified/1.0.2_3ib2ivapxullxkx3xftsimdk7u:
     resolution: {integrity: sha512-OGbEy+1P+UT26CYi4opY4gebD8cWRDxAT6MAObIVQMiqYdxZr1g3QHWCToVsm31x2NkLS4K3+MC2qInaRMa39g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/lodash-unified/-/lodash-unified-1.0.2.tgz}
     id: registry.npmmirror.com/lodash-unified/1.0.2
     name: lodash-unified
@@ -2243,7 +2241,7 @@ packages:
       - vite
     dev: true
 
-  registry.npmmirror.com/unplugin-auto-import/0.6.9_@vueuse+core@8.9.1+vite@2.9.14:
+  registry.npmmirror.com/unplugin-auto-import/0.6.9_jg57o3hw2g6ynl3mkvtaux3hqe:
     resolution: {integrity: sha512-IqgT7AoRrNQwNhiF/wDH3sMEDX8SqCYBEgJzwdg5441b5aiC5VwZz0J0wYqkaKu89YkZE9DG6rQ2JpFfZv1iiQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/unplugin-auto-import/-/unplugin-auto-import-0.6.9.tgz}
     id: registry.npmmirror.com/unplugin-auto-import/0.6.9
     name: unplugin-auto-import
@@ -2495,18 +2493,6 @@ packages:
       '@vue/runtime-dom': registry.npmmirror.com/@vue/runtime-dom/3.2.37
       '@vue/server-renderer': registry.npmmirror.com/@vue/server-renderer/3.2.37_vue@3.2.37
       '@vue/shared': registry.npmmirror.com/@vue/shared/3.2.37
-
-  registry.npmmirror.com/vuex/4.0.2_vue@3.2.37:
-    resolution: {integrity: sha512-M6r8uxELjZIK8kTKDGgZTYX/ahzblnzC4isU1tpmEuOIIKmV+TRdc+H4s8ds2NuZ7wpUTdGRzJRtoj+lI+pc0Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vuex/-/vuex-4.0.2.tgz}
-    id: registry.npmmirror.com/vuex/4.0.2
-    name: vuex
-    version: 4.0.2
-    peerDependencies:
-      vue: ^3.0.2
-    dependencies:
-      '@vue/devtools-api': registry.npmmirror.com/@vue/devtools-api/6.2.0
-      vue: registry.npmmirror.com/vue/3.2.37
-    dev: false
 
   registry.npmmirror.com/webpack-sources/3.2.3:
     resolution: {integrity: sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/webpack-sources/-/webpack-sources-3.2.3.tgz}

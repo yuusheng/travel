@@ -18,9 +18,7 @@ const config = defineConfig(({ mode }) => {
 
     plugins: [
       vue({ reactivityTransform: true }),
-      // AutoImport({
-      //   resolvers: [ElementPlusResolver()],
-      // }),
+      AutoImport(),
       Components({
         resolvers: [ElementPlusResolver()],
       }),

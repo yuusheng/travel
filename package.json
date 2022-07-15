@@ -21,8 +21,7 @@
     "tailwindcss": "^3.0.23",
     "upath": "^2.0.1",
     "vue": "^3.2.25",
-    "vue-router": "4",
-    "vuex": "^4.0.2"
+    "vue-router": "4"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.182",
