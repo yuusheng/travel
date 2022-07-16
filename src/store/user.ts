@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { User } from '@/types'
+import { useStorage } from '@vueuse/core'
 
 export const useUserStore = defineStore('user', () => {
   const user = ref<User>({
@@ -10,24 +11,27 @@ export const useUserStore = defineStore('user', () => {
     id: '',
   })
 
-  let status = $ref(false)
+  let status = ref(false)
+
+  const token = useStorage('Authorization', '')
 
   function login(userInfo: User) {
     user.value = userInfo
-    status = true
+    status.value = true
   }
 
   function logout() {
     Object.keys(user.value).forEach((key) => {
       user[key] = ''
     })
-    status = false
+    status.value = false
   }
 
-  return $$({
+  return {
     user,
     status,
+    token,
     login,
     logout,
-  })
+  }
 })

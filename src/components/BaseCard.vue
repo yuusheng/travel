@@ -43,7 +43,6 @@ const props = defineProps({
 const router = useRouter()
 
 const handleDetail = () => {
-  console.log('object')
   // 添加路由
   router.push(props.url)
 }

@@ -72,7 +72,9 @@ export const signUp = async (
 }
 
 // 当前用户状态
-export const currentUser = async (token: string) => {
+export const currentUser = async () => {
+  const token = useUserStore().token
+
   let res: User = await get('/api/users/current', {
     headers: { Authorization: token },
   })

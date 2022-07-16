@@ -11,13 +11,17 @@
 
 <script setup lang="ts">
 import {
+  getIfLiked,
   likeByArticleId,
   cancleLike,
   dislikeByArticleId,
   cancelDislike,
 } from '@/http'
 import { withBase } from '@/utils'
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+
+const id = useRoute().fullPath.split('/')[2]
 
 let isLiked = $ref(false)
 let isDisliked = $ref(false)
@@ -26,13 +30,15 @@ const likeImgUrl = computed(() =>
   isLiked ? withBase(`/liked.png`) : withBase(`/like.png`)
 )
 
-function handleLike() {
+async function handleLike() {
   if (!isLiked) {
-    likeByArticleId('', '')
-    isLiked = true
+    let res = await likeByArticleId(id)
+    if (res.success) isLiked = true
+    else console.error(res.message)
   } else {
-    cancleLike('', '')
-    isLiked = false
+    let res = await cancleLike(id)
+    if (res.success) isLiked = false
+    else console.error(res.message)
   }
 }
 
@@ -42,13 +48,21 @@ const dislikeImgUrl = computed(() =>
 
 function handleDisLike() {
   if (!isDisliked) {
-    dislikeByArticleId('', '')
+    dislikeByArticleId(id)
     isDisliked = true
   } else {
-    cancelDislike('', '')
+    cancelDislike(id)
     isDisliked = false
   }
 }
+
+onMounted(async () => {
+  let res = await getIfLiked(id)
+  if (res.success) {
+    isLiked = res.liked
+    isDisliked = res.disliked
+  }
+})
 </script>
 
 <style scoped></style>
